@@ -1,0 +1,43 @@
+[gd_scene format=3 uid="uid://voc5gk35wwbn"]
+
+[ext_resource type="PackedScene" uid="uid://hl0aym5br8po" path="res://Scenes/Player.tscn" id="1_iukft"]
+
+[sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g7b7a"]
+distance = -2.0
+
+[node name="Game" type="Node2D" unique_id=1265386921]
+
+[node name="bg" type="ColorRect" parent="." unique_id=1366355263]
+offset_right = 800.0
+offset_bottom = 480.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.22267514, 0.22267514, 0.22267514, 1)
+metadata/_edit_lock_ = true
+
+[node name="Player" parent="." unique_id=1493253394 instance=ExtResource("1_iukft")]
+position = Vector2(421, 273)
+
+[node name="Wall" type="Node2D" parent="." unique_id=1472976290]
+metadata/_edit_lock_ = true
+
+[node name="StaticBody2D" type="StaticBody2D" parent="Wall" unique_id=1414265032]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Wall/StaticBody2D" unique_id=2117821314]
+position = Vector2(400, 480)
+shape = SubResource("WorldBoundaryShape2D_g7b7a")
+
+[node name="CollisionShape2D2" type="CollisionShape2D" parent="Wall/StaticBody2D" unique_id=202304268]
+position = Vector2(0, 240)
+rotation = 1.5707964
+shape = SubResource("WorldBoundaryShape2D_g7b7a")
+
+[node name="CollisionShape2D3" type="CollisionShape2D" parent="Wall/StaticBody2D" unique_id=1948567091]
+position = Vector2(400, 0)
+rotation = -3.1415925
+shape = SubResource("WorldBoundaryShape2D_g7b7a")
+
+[node name="CollisionShape2D4" type="CollisionShape2D" parent="Wall/StaticBody2D" unique_id=81166562]
+position = Vector2(800, 240)
+rotation = -1.5707964
+shape = SubResource("WorldBoundaryShape2D_g7b7a")
