@@ -7,10 +7,14 @@ enum MOVE_MODE {
 
 @export var move_mode : MOVE_MODE = MOVE_MODE.JOYSTICK
 @export var move_speed : float = 250
-@export var move_speed_log : float = 75
+@export var move_speed_far : float = 0.033
+@export var move_speed_near : float = move_area_r ** 2 * 3 * move_speed_far
 @export var bullet_scene : PackedScene
 @export var move_area_r : float = 35
 @export var joystick : VirtualJoystick
+@export var hp : float = 5
+@export var invincible_frame : float = 0
+const INVINCIBLE_FRAME : float = 120
 
 func _ready() -> void:
 	match move_mode:
@@ -29,13 +33,20 @@ func _physics_process(delta: float) -> void:
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				var local_mouse_pos = to_local(get_global_mouse_position())
 				var distance = (local_mouse_pos.x ** 2 + local_mouse_pos.y ** 2 )
-				if distance >= (move_area_r ** 2):
+				var move_area_distance = move_area_r ** 2
+				if distance >= move_area_distance:
 					var theta = rotation
-					velocity += Vector2(cos(theta), sin(theta)) * move_speed_log * (log(distance/5000+1.3) / log(1.3))
-					#velocity += Vector2(cos(theta), sin(theta)) * 1 * distance * 0.01
+					if distance >= move_area_distance * 3:
+						velocity += Vector2(cos(theta), sin(theta)) * distance * move_speed_far
+					else:
+						velocity += Vector2(cos(theta), sin(theta)) * move_speed_near
+					
 		MOVE_MODE.JOYSTICK:
 			look_at(position + velocity)
 	move_and_slide()
+	if invincible_frame > 0:
+		invincible_frame -= 1
+	
 	
 
 func _on_fire() -> void:

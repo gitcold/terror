@@ -1,23 +1,25 @@
 [gd_scene format=3 uid="uid://voc5gk35wwbn"]
 
 [ext_resource type="PackedScene" uid="uid://hl0aym5br8po" path="res://Scenes/Player.tscn" id="1_iukft"]
+[ext_resource type="Script" uid="uid://d65bt4uee8y1" path="res://Scripts/GameManager.gd" id="1_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://droge15x262ds" path="res://Scenes/OrangeBall.tscn" id="2_gl6un"]
+[ext_resource type="Script" uid="uid://dipkdh56gvywk" path="res://Scripts/EnemySpawner.gd" id="3_kldst"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g7b7a"]
 distance = -2.0
 
-[node name="Game" type="Node2D" unique_id=1265386921]
+[node name="Game" type="Node2D" unique_id=1265386921 node_paths=PackedStringArray("player", "label_hp")]
+script = ExtResource("1_j5yw3")
+player = NodePath("Player")
+label_hp = NodePath("CanvasLayer/Label_hp")
 
-[node name="bg" type="ColorRect" parent="." unique_id=1366355263]
+[node name="Background" type="ColorRect" parent="." unique_id=1366355263]
 offset_right = 800.0
 offset_bottom = 480.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
 color = Color(0.22267514, 0.22267514, 0.22267514, 1)
 metadata/_edit_lock_ = true
-
-[node name="Player" parent="." unique_id=1493253394 node_paths=PackedStringArray("joystick") instance=ExtResource("1_iukft")]
-position = Vector2(273, 217)
-joystick = NodePath("../CanvasLayer/VirtualJoystick")
 
 [node name="Wall" type="Node2D" parent="." unique_id=1472976290]
 metadata/_edit_lock_ = true
@@ -43,6 +45,18 @@ position = Vector2(800, 240)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_g7b7a")
 
+[node name="Player" parent="." unique_id=1493253394 node_paths=PackedStringArray("joystick") instance=ExtResource("1_iukft")]
+position = Vector2(19, 307)
+joystick = NodePath("../CanvasLayer/VirtualJoystick")
+metadata/_edit_group_ = true
+
+[node name="EnemySpawner" type="Node2D" parent="." unique_id=945491941]
+script = ExtResource("3_kldst")
+
+[node name="OrangeBall" parent="." unique_id=1185939940 instance=ExtResource("2_gl6un")]
+position = Vector2(242, 179)
+metadata/_edit_group_ = true
+
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1180482799]
 
 [node name="VirtualJoystick" type="VirtualJoystick" parent="CanvasLayer" unique_id=1748659571]
@@ -59,11 +73,20 @@ action_up = &"up"
 action_down = &"down"
 visibility_mode = 1
 
-[node name="Button" type="Button" parent="CanvasLayer" unique_id=1764983060]
+[node name="Button_change" type="Button" parent="CanvasLayer" unique_id=1764983060]
 offset_right = 64.0
 offset_bottom = 31.0
 scale = Vector2(1.7543796, 1.9756879)
 text = "change
 "
 
-[connection signal="pressed" from="CanvasLayer/Button" to="Player" method="_on_move_mode_change"]
+[node name="Label_hp" type="Label" parent="CanvasLayer" unique_id=884498698]
+anchors_preset = 5
+anchor_left = 0.5
+anchor_right = 0.5
+offset_left = -20.0
+offset_right = 20.0
+offset_bottom = 23.0
+grow_horizontal = 2
+
+[connection signal="pressed" from="CanvasLayer/Button_change" to="Player" method="_on_move_mode_change"]
