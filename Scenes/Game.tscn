@@ -15,8 +15,9 @@ size_flags_vertical = 4
 color = Color(0.22267514, 0.22267514, 0.22267514, 1)
 metadata/_edit_lock_ = true
 
-[node name="Player" parent="." unique_id=1493253394 instance=ExtResource("1_iukft")]
-position = Vector2(421, 273)
+[node name="Player" parent="." unique_id=1493253394 node_paths=PackedStringArray("joystick") instance=ExtResource("1_iukft")]
+position = Vector2(273, 217)
+joystick = NodePath("../CanvasLayer/VirtualJoystick")
 
 [node name="Wall" type="Node2D" parent="." unique_id=1472976290]
 metadata/_edit_lock_ = true
@@ -41,3 +42,28 @@ shape = SubResource("WorldBoundaryShape2D_g7b7a")
 position = Vector2(800, 240)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_g7b7a")
+
+[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1180482799]
+
+[node name="VirtualJoystick" type="VirtualJoystick" parent="CanvasLayer" unique_id=1748659571]
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+joystick_mode = 1
+joystick_size = 126.0
+action_left = &"left"
+action_right = &"right"
+action_up = &"up"
+action_down = &"down"
+visibility_mode = 1
+
+[node name="Button" type="Button" parent="CanvasLayer" unique_id=1764983060]
+offset_right = 64.0
+offset_bottom = 31.0
+scale = Vector2(1.7543796, 1.9756879)
+text = "change
+"
+
+[connection signal="pressed" from="CanvasLayer/Button" to="Player" method="_on_move_mode_change"]
