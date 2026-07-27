@@ -1,28 +1,29 @@
-[gd_scene format=3 uid="uid://droge15x262ds"]
+[gd_scene format=3 uid="uid://c7btsohy1k5bi"]
 
-[ext_resource type="Script" uid="uid://ckmfl47i2cebq" path="res://Scripts/OrangeBall.gd" id="1_6plcg"]
-[ext_resource type="Texture2D" uid="uid://1b47v0wtf1ju" path="res://assets/OrangeBall.png" id="2_6plcg"]
+[ext_resource type="Script" uid="uid://gsci8tofnjdm" path="res://Scripts/BigYellow.gd" id="1_mo5d6"]
+[ext_resource type="Texture2D" uid="uid://lwjhj6spaqpk" path="res://assets/BigYellow.png" id="2_mo5d6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g7b7a"]
 radius = 14.0
 
-[node name="OrangeBall" type="CharacterBody2D" unique_id=1185939940]
+[node name="BigYellow" type="CharacterBody2D" unique_id=1185939940]
+scale = Vector2(1.6281226, 1.6281226)
 collision_layer = 2
 collision_mask = 2
-script = ExtResource("1_6plcg")
+script = ExtResource("1_mo5d6")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1370188911]
 scale = Vector2(0.68006206, 0.68006206)
-texture = ExtResource("2_6plcg")
+texture = ExtResource("2_mo5d6")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=1896274350]
-scale = Vector2(0.67009646, 0.67009646)
+scale = Vector2(1.4977723, 1.4977723)
 shape = SubResource("CircleShape2D_g7b7a")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=864548962]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2056461302]
-scale = Vector2(0.67009646, 0.67009646)
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=758177845]
+scale = Vector2(1.4977723, 1.4977723)
 shape = SubResource("CircleShape2D_g7b7a")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]

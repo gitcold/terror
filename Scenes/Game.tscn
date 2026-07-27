@@ -45,7 +45,7 @@ rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_g7b7a")
 
 [node name="Player" parent="." unique_id=1493253394 node_paths=PackedStringArray("joystick") instance=ExtResource("1_iukft")]
-position = Vector2(19, 307)
+position = Vector2(378, 264)
 joystick = NodePath("../CanvasLayer/VirtualJoystick")
 metadata/_edit_group_ = true
 

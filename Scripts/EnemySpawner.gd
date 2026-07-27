@@ -10,11 +10,16 @@ var spawn_data : Array[Dictionary] = [
 		"count"=Vector2(2, 4),
 		"distance"=150,
 		"name"="CyanSquare",
-	}
+	},
+	{
+		"count"=Vector2(8, 15),
+		"distance"=200,
+		"name"="BigYellow",
+	},
 ]
 
-var spawn_count : Array = [3, 4]
-var enemy_num = 2
+var spawn_count : Array = [3, 4, 15]
+var enemy_num = 3
 
 func _ready() -> void:
 	randomize()

@@ -5,8 +5,6 @@
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd28d"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_5xotc"]
-
 [node name="CyanSquare" type="CharacterBody2D" unique_id=1185939940]
 collision_layer = 2
 collision_mask = 2
@@ -22,9 +20,9 @@ shape = SubResource("RectangleShape2D_nd28d")
 
 [node name="Area2D" type="Area2D" parent="." unique_id=864548962]
 
-[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2056461302]
-scale = Vector2(0.40967405, 0.40967405)
-shape = SubResource("RectangleShape2D_5xotc")
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=1955939883]
+scale = Vector2(0.3998368, 0.3998368)
+shape = SubResource("RectangleShape2D_nd28d")
 
 [connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
 [connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
