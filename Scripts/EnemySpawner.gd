@@ -5,11 +5,16 @@ var spawn_data : Array[Dictionary] = [
 		"count"=Vector2(0.1, 2),
 		"distance"=150,
 		"name"="OrangeBall",
+	},
+	{
+		"count"=Vector2(2, 4),
+		"distance"=150,
+		"name"="CyanSquare",
 	}
 ]
 
-var spawn_count : Array = [3]
-var enemy_num = 1
+var spawn_count : Array = [3, 4]
+var enemy_num = 2
 
 func _ready() -> void:
 	randomize()
@@ -27,7 +32,6 @@ func _process(delta: float) -> void:
 				
 func spawn_enemy(i : float, delta : float) -> void:
 	spawn_count[i] -= delta
-	print(spawn_count[i])
 	if spawn_count[i] <= 0:
 		var count_min = spawn_data[i]["count"].x
 		var count_max = spawn_data[i]["count"].y

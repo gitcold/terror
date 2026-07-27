@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://hl0aym5br8po" path="res://Scenes/Player.tscn" id="1_iukft"]
 [ext_resource type="Script" uid="uid://d65bt4uee8y1" path="res://Scripts/GameManager.gd" id="1_j5yw3"]
-[ext_resource type="PackedScene" uid="uid://droge15x262ds" path="res://Scenes/OrangeBall.tscn" id="2_gl6un"]
 [ext_resource type="Script" uid="uid://dipkdh56gvywk" path="res://Scripts/EnemySpawner.gd" id="3_kldst"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g7b7a"]
@@ -52,10 +51,6 @@ metadata/_edit_group_ = true
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=945491941]
 script = ExtResource("3_kldst")
-
-[node name="OrangeBall" parent="." unique_id=1185939940 instance=ExtResource("2_gl6un")]
-position = Vector2(242, 179)
-metadata/_edit_group_ = true
 
 [node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1180482799]
 

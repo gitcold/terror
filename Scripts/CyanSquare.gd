@@ -1,18 +1,22 @@
 extends CharacterBody2D
 
-@export var speed : float = 75
-@export var counter : float = INF
+@export var speed : float = 0
+@export var counter : float = 75
 @export var hp : float = 1
 @export var move_area_r : float = 5
 
 var is_dead : bool = false
 var is_player_in : bool = false
 
+func _ready() -> void:
+	randomize()
+	counter = randi_range(75, 80)
+
 func _physics_process(delta: float) -> void:
 	var player_pos = get_tree().current_scene.get_player_pos()
 	var distance = position.distance_to(player_pos)
 	if not is_dead:
-		look_at(player_pos)
+		#look_at(player_pos)
 		if distance >= move_area_r:
 			velocity = (player_pos-position).normalized() * speed
 		else:

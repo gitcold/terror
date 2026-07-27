@@ -12,9 +12,10 @@ enum MOVE_MODE {
 @export var bullet_scene : PackedScene
 @export var move_area_r : float = 35
 @export var joystick : VirtualJoystick
+@export var polygon : Polygon2D
 @export var hp : float = 5
-@export var invincible_frame : float = 0
-const INVINCIBLE_FRAME : float = 120
+@export var invincible_second : float = 0
+const INVINCIBLE_SECOND : float = 4
 
 func _ready() -> void:
 	match move_mode:
@@ -44,18 +45,19 @@ func _physics_process(delta: float) -> void:
 		MOVE_MODE.JOYSTICK:
 			look_at(position + velocity)
 	move_and_slide()
-	if invincible_frame > 0:
-		invincible_frame -= 1
+	if invincible_second > 0:
+		invincible_second -= delta
+	polygon.modulate.a = cos(invincible_second * 12)
 	
 	
 
 func _on_fire() -> void:
 	var bullet_node = bullet_scene.instantiate()
-	bullet_node.position = position
 	var theta = rotation
 	var bullet_direction = Vector2(cos(theta), sin(theta))
 	bullet_node.direction = bullet_direction
 	bullet_node.rotation = rotation
+	bullet_node.position = position + bullet_direction * 13
 	get_tree().current_scene.add_child(bullet_node)
 
 
