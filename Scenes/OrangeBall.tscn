@@ -11,13 +11,6 @@ collision_layer = 2
 collision_mask = 2
 script = ExtResource("1_6plcg")
 
-[node name="Polygon2D" type="Polygon2D" parent="." unique_id=607337476]
-position = Vector2(1.5258789e-05, 0)
-scale = Vector2(0.21445706, 0.17496939)
-color = Color(0.18431373, 1, 0.4, 1)
-polygon = PackedVector2Array(-8, -8, 648.00006, -8, 648.00006, 8, -8, 8)
-uv = PackedVector2Array(-432, -64, 224.00006, -64, 224.00006, -40, -432, -40)
-
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1370188911]
 scale = Vector2(0.68006206, 0.68006206)
 texture = ExtResource("1_x5bwi")

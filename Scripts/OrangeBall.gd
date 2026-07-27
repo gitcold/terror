@@ -10,7 +10,7 @@ var is_player_in : bool = false
 
 func _physics_process(delta: float) -> void:
 	var player_pos = get_tree().current_scene.get_player_pos()
-	var distance = position.distance_to(player_pos) # 5
+	var distance = position.distance_to(player_pos)
 	if not is_dead:
 		look_at(player_pos)
 		if distance >= move_area_r:
