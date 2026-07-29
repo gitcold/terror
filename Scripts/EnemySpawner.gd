@@ -20,17 +20,15 @@ var spawn_data : Array[Dictionary] = [
 
 var spawn_count : Array = [3, 4, 15]
 var enemy_num = 3
+var is_lose : bool = false
 
 func _ready() -> void:
 	randomize()
-	#spawn_count.resize(enemy_num)  # 先扩充长度
-	#spawn_count.fill(0)    # 再填充数值
-	#for i in range(enemy_num):
-	#	var count_min = spawn_data[i]["count"].x
-	#	var count_max = spawn_data[i]["count"].y
-	#	spawn_count[i] = randf_range(count_min,count_max)
-
+	
 func _process(delta: float) -> void:
+	is_lose = get_tree().current_scene.is_lose
+	if is_lose:
+		return
 	for i in range(enemy_num):
 		spawn_enemy(i,delta)
 		

@@ -1,0 +1,70 @@
+[gd_scene format=3 uid="uid://b1f1l7db73vnq"]
+
+[ext_resource type="Script" uid="uid://jaesx5cxwwys" path="res://Scripts/MainMenu.gd" id="1_tt5f1"]
+
+[node name="MainMenu" type="Control" unique_id=807129223]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_tt5f1")
+
+[node name="Title" type="Label" parent="." unique_id=836230173]
+layout_mode = 0
+offset_left = 214.0
+offset_top = 24.0
+offset_right = 263.0
+offset_bottom = 47.0
+scale = Vector2(7.72968, 7.72968)
+text = "Terror"
+
+[node name="Button_play" type="Button" parent="." unique_id=527441086]
+layout_mode = 0
+offset_left = 334.5
+offset_top = 201.0
+offset_right = 383.5
+offset_bottom = 232.0
+scale = Vector2(3.0410714, 3.0410714)
+text = "Play"
+
+[node name="Button_quit" type="Button" parent="." unique_id=1284982892]
+layout_mode = 0
+offset_left = 334.5
+offset_top = 297.81107
+offset_right = 383.5
+offset_bottom = 328.81107
+scale = Vector2(3.0410714, 3.0410714)
+text = "Quit"
+
+[node name="Version" type="Label" parent="." unique_id=284067933]
+layout_mode = 1
+anchors_preset = 2
+anchor_top = 1.0
+anchor_bottom = 1.0
+offset_top = -63.99997
+offset_right = 40.0
+offset_bottom = -40.99997
+grow_vertical = 0
+scale = Vector2(2.7784915, 2.7784915)
+text = "v 0.1"
+
+[node name="Auther" type="Label" parent="." unique_id=863378257]
+layout_mode = 1
+anchors_preset = 3
+anchor_left = 1.0
+anchor_top = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -325.0
+offset_top = -61.799988
+offset_right = -204.0
+offset_bottom = -38.799988
+grow_horizontal = 0
+grow_vertical = 0
+scale = Vector2(2.6855516, 2.6855516)
+text = "by: BlueIce1437"
+
+[connection signal="pressed" from="Button_play" to="." method="_on_button_play_pressed"]
+[connection signal="pressed" from="Button_quit" to="." method="_on_button_quit_pressed"]

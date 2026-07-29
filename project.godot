@@ -11,7 +11,7 @@ config_version=5
 [application]
 
 config/name="terror"
-run/main_scene="uid://voc5gk35wwbn"
+run/main_scene="uid://b1f1l7db73vnq"
 config/features=PackedStringArray("4.7", "GL Compatibility")
 config/icon="res://icon.svg"
 
@@ -20,7 +20,6 @@ config/icon="res://icon.svg"
 window/size/viewport_width=800
 window/size/viewport_height=480
 window/stretch/mode="canvas_items"
-window/stretch/aspect="expand"
 
 [global_group]
 

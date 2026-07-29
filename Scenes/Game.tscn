@@ -10,7 +10,7 @@ distance = -2.0
 [node name="Game" type="Node2D" unique_id=1265386921 node_paths=PackedStringArray("player", "label_hp")]
 script = ExtResource("1_j5yw3")
 player = NodePath("Player")
-label_hp = NodePath("CanvasLayer/Label_hp")
+label_hp = NodePath("UI/HP")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1366355263]
 offset_right = 800.0
@@ -46,15 +46,15 @@ shape = SubResource("WorldBoundaryShape2D_g7b7a")
 
 [node name="Player" parent="." unique_id=1493253394 node_paths=PackedStringArray("joystick") instance=ExtResource("1_iukft")]
 position = Vector2(378, 264)
-joystick = NodePath("../CanvasLayer/VirtualJoystick")
+joystick = NodePath("../UI/VirtualJoystick")
 metadata/_edit_group_ = true
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=945491941]
 script = ExtResource("3_kldst")
 
-[node name="CanvasLayer" type="CanvasLayer" parent="." unique_id=1180482799]
+[node name="UI" type="CanvasLayer" parent="." unique_id=1180482799]
 
-[node name="VirtualJoystick" type="VirtualJoystick" parent="CanvasLayer" unique_id=1748659571]
+[node name="VirtualJoystick" type="VirtualJoystick" parent="UI" unique_id=1748659571]
 anchors_preset = 15
 anchor_right = 1.0
 anchor_bottom = 1.0
@@ -68,20 +68,60 @@ action_up = &"up"
 action_down = &"down"
 visibility_mode = 1
 
-[node name="Button_change" type="Button" parent="CanvasLayer" unique_id=1764983060]
+[node name="Button_change" type="Button" parent="UI" unique_id=1764983060]
 offset_right = 64.0
 offset_bottom = 31.0
 scale = Vector2(1.7543796, 1.9756879)
 text = "change
 "
 
-[node name="Label_hp" type="Label" parent="CanvasLayer" unique_id=884498698]
+[node name="HP" type="Label" parent="UI" unique_id=884498698]
 anchors_preset = 5
 anchor_left = 0.5
 anchor_right = 0.5
-offset_left = -20.0
-offset_right = 20.0
+offset_left = -52.0
+offset_right = -12.0
 offset_bottom = 23.0
 grow_horizontal = 2
+scale = Vector2(2.4983196, 2.4983196)
+text = "HP: 5"
 
-[connection signal="pressed" from="CanvasLayer/Button_change" to="Player" method="_on_move_mode_change"]
+[node name="Lose" type="Control" parent="UI" unique_id=690739905]
+visible = false
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="Lose" type="Label" parent="UI/Lose" unique_id=1992982662]
+layout_mode = 0
+offset_left = 216.0
+offset_top = 99.0
+offset_right = 290.0
+offset_bottom = 122.0
+scale = Vector2(5.198694, 5.198694)
+text = "You Lose!"
+
+[node name="Restart" type="Button" parent="UI/Lose" unique_id=1281104293]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 206.99998
+offset_right = 366.81723
+offset_bottom = 238.86667
+scale = Vector2(2.8735096, 2.8735096)
+text = "Restart"
+
+[node name="Quit" type="Button" parent="UI/Lose" unique_id=1015559267]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 307.0
+offset_right = 367.0
+offset_bottom = 338.0
+scale = Vector2(2.8735096, 2.8735096)
+text = "Quit"
+
+[connection signal="pressed" from="UI/Button_change" to="Player" method="_on_move_mode_change"]
+[connection signal="pressed" from="UI/Lose/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/Lose/Quit" to="." method="_on_quit_pressed"]

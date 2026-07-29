@@ -7,8 +7,12 @@ extends CharacterBody2D
 
 var is_dead : bool = false
 var is_player_in : bool = false
+var is_lose : bool = false
 
 func _physics_process(delta: float) -> void:
+	is_lose = get_tree().current_scene.is_lose
+	if is_lose:
+		return
 	var player_pos = get_tree().current_scene.get_player_pos()
 	var distance = position.distance_to(player_pos)
 	if not is_dead:
