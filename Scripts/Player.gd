@@ -13,13 +13,14 @@ enum MOVE_MODE {
 @export var move_area_r : float = 35
 @export var joystick : VirtualJoystick
 @export var polygon : Polygon2D
-@export var hp : float = 1
+@export var hp : float = 0
 var HP : float = 5
 @export var invincible_second : float = 0
 const INVINCIBLE_SECOND : float = 4
 var is_lose : bool = false
 
 func _ready() -> void:
+	hp = HP
 	match move_mode:
 		MOVE_MODE.TOUCH:
 			joystick.visible = false

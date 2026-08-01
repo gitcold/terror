@@ -3,7 +3,8 @@ extends Node2D
 @export var score : int = 0
 @export var player : CharacterBody2D
 @export var label_hp : Label
-@export var is_lose : bool = false
+var is_lose : bool = false
+var is_pause : bool = false
 
 func get_player_pos() -> Vector2:
 	return player.position
@@ -28,3 +29,12 @@ func _on_restart_pressed() -> void:
 
 func _on_quit_pressed() -> void:
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
+
+
+func _on_button_pause_pressed() -> void:
+	if is_pause:
+		is_pause = false
+		get_tree().paused = false
+	else:
+		is_pause = true
+		get_tree().paused = true

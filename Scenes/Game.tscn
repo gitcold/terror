@@ -69,8 +69,8 @@ action_down = &"down"
 visibility_mode = 1
 
 [node name="Button_change" type="Button" parent="UI" unique_id=1764983060]
-offset_right = 64.0
-offset_bottom = 31.0
+offset_right = 72.10229
+offset_bottom = 34.924545
 scale = Vector2(1.7543796, 1.9756879)
 text = "change
 "
@@ -85,6 +85,16 @@ offset_bottom = 23.0
 grow_horizontal = 2
 scale = Vector2(2.4983196, 2.4983196)
 text = "HP: 5"
+
+[node name="Button_pause" type="Button" parent="UI" unique_id=980329856]
+process_mode = 3
+anchors_preset = 1
+anchor_left = 1.0
+anchor_right = 1.0
+offset_left = -110.48999
+offset_bottom = 58.0
+grow_horizontal = 0
+text = "Pause"
 
 [node name="Lose" type="Control" parent="UI" unique_id=690739905]
 visible = false
@@ -123,5 +133,6 @@ scale = Vector2(2.8735096, 2.8735096)
 text = "Quit"
 
 [connection signal="pressed" from="UI/Button_change" to="Player" method="_on_move_mode_change"]
+[connection signal="pressed" from="UI/Button_pause" to="." method="_on_button_pause_pressed"]
 [connection signal="pressed" from="UI/Lose/Restart" to="." method="_on_restart_pressed"]
 [connection signal="pressed" from="UI/Lose/Quit" to="." method="_on_quit_pressed"]
