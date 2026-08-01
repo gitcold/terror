@@ -13,27 +13,38 @@ func get_player_pos() -> Vector2:
 func _process(delta: float) -> void:
 	label_hp.text = "HP: " + str(int(player.hp))
 	label_score.text = "Score: " + str(int(score))
-	print(score)
 	if player.hp <= 0:
 		is_lose = true
+		is_pause = true
+		get_tree().paused = true
 		$UI/Lose.visible = true
 		$UI/Menu.visible = true
-	if not is_lose:
+	if not is_lose and not is_pause:
 		score += delta
 	
 func attack_player() -> void:
-	if is_lose:
-		return
 	if player.invincible_second <= 0:
 		player.hp -= 1
 		player.invincible_second = player.INVINCIBLE_SECOND
 
 
 func _on_restart_pressed() -> void:
+	is_lose = false
+	is_pause = false
+	get_tree().paused = false
+	$UI/Pause.visible = false
+	$UI/Lose.visible = false
+	$UI/Menu.visible = false
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
 
 func _on_quit_pressed() -> void:
+	is_lose = false
+	is_pause = false
+	get_tree().paused = false
+	$UI/Pause.visible = false
+	$UI/Lose.visible = false
+	$UI/Menu.visible = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 

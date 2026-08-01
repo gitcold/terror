@@ -27,8 +27,8 @@ func _ready() -> void:
 	
 func _process(delta: float) -> void:
 	is_lose = get_tree().current_scene.is_lose
-	if is_lose:
-		return
+	#if is_lose:
+	#	return
 	for i in range(enemy_num):
 		spawn_enemy(i,delta)
 		

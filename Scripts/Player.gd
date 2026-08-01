@@ -14,7 +14,7 @@ enum MOVE_MODE {
 @export var joystick : VirtualJoystick
 @export var polygon : Polygon2D
 @export var hp : float = 0
-var HP : float = 1
+var HP : float = 5
 @export var invincible_second : float = 0
 const INVINCIBLE_SECOND : float = 4
 var is_lose : bool = false
@@ -29,8 +29,6 @@ func _ready() -> void:
 	
 func _physics_process(delta: float) -> void:
 	is_lose = get_tree().current_scene.is_lose
-	if is_lose:
-		return
 	velocity = Input.get_vector("left", "right", "up", "down") * move_speed
 	match move_mode:
 		MOVE_MODE.TOUCH:
@@ -58,8 +56,6 @@ func _physics_process(delta: float) -> void:
 	
 
 func _on_fire() -> void:
-	if is_lose:
-		return
 	var bullet_node = bullet_scene.instantiate()
 	var theta = rotation
 	var bullet_direction = Vector2(cos(theta), sin(theta))

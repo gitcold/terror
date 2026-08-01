@@ -7,11 +7,13 @@ var is_lose : bool = false
 func _ready() -> void:
 	#rotation = direction.angle()
 	await get_tree().create_timer(10).timeout
+	#if is_lose:
+	#	return
 	queue_free()
 
 
 func _physics_process(delta: float) -> void:
 	is_lose = get_tree().current_scene.is_lose
-	if is_lose:
-		return
+	#if is_lose:
+	#	return
 	position += direction * bullet_speed * delta
