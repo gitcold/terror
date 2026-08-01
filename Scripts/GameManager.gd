@@ -17,6 +17,7 @@ func _process(delta: float) -> void:
 	if player.hp <= 0:
 		is_lose = true
 		$UI/Lose.visible = true
+		$UI/Menu.visible = true
 	if not is_lose:
 		score += delta
 	
@@ -40,6 +41,10 @@ func _on_button_pause_pressed() -> void:
 	if is_pause:
 		is_pause = false
 		get_tree().paused = false
+		$UI/Pause.visible = false
+		$UI/Menu.visible = false
 	else:
 		is_pause = true
 		get_tree().paused = true
+		$UI/Pause.visible = true
+		$UI/Menu.visible = true

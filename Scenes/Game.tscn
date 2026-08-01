@@ -104,6 +104,47 @@ offset_bottom = 23.0
 scale = Vector2(2.225965, 2.225965)
 text = "Score: 0"
 
+[node name="Menu" type="Control" parent="UI" unique_id=1739931969]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Restart" type="Button" parent="UI/Menu" unique_id=1281104293]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 206.99998
+offset_right = 366.81723
+offset_bottom = 238.86667
+scale = Vector2(2.8735096, 2.8735096)
+text = "Restart"
+
+[node name="Quit" type="Button" parent="UI/Menu" unique_id=1015559267]
+layout_mode = 0
+offset_left = 300.0
+offset_top = 307.0
+offset_right = 367.0
+offset_bottom = 338.0
+scale = Vector2(2.8735096, 2.8735096)
+text = "Quit"
+
+[node name="Pause" type="Control" parent="UI" unique_id=20377285]
+visible = false
+layout_mode = 3
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="Pause" type="Label" parent="UI/Pause" unique_id=1548406624]
+layout_mode = 0
+offset_left = 253.0
+offset_top = 99.0
+offset_right = 313.0
+offset_bottom = 122.0
+scale = Vector2(5.0669227, 5.0669227)
+text = "Pasue..."
+
 [node name="Lose" type="Control" parent="UI" unique_id=690739905]
 visible = false
 layout_mode = 3
@@ -122,25 +163,7 @@ offset_bottom = 122.0
 scale = Vector2(5.198694, 5.198694)
 text = "You Lose!"
 
-[node name="Restart" type="Button" parent="UI/Lose" unique_id=1281104293]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 206.99998
-offset_right = 366.81723
-offset_bottom = 238.86667
-scale = Vector2(2.8735096, 2.8735096)
-text = "Restart"
-
-[node name="Quit" type="Button" parent="UI/Lose" unique_id=1015559267]
-layout_mode = 0
-offset_left = 300.0
-offset_top = 307.0
-offset_right = 367.0
-offset_bottom = 338.0
-scale = Vector2(2.8735096, 2.8735096)
-text = "Quit"
-
 [connection signal="pressed" from="UI/Button_change" to="Player" method="_on_move_mode_change"]
 [connection signal="pressed" from="UI/Button_pause" to="." method="_on_button_pause_pressed"]
-[connection signal="pressed" from="UI/Lose/Restart" to="." method="_on_restart_pressed"]
-[connection signal="pressed" from="UI/Lose/Quit" to="." method="_on_quit_pressed"]
+[connection signal="pressed" from="UI/Menu/Restart" to="." method="_on_restart_pressed"]
+[connection signal="pressed" from="UI/Menu/Quit" to="." method="_on_quit_pressed"]
