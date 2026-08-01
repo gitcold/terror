@@ -1,8 +1,9 @@
 extends Node2D
 
-@export var score : int = 0
+@export var score : float = 0
 @export var player : CharacterBody2D
 @export var label_hp : Label
+@export var label_score : Label
 var is_lose : bool = false
 var is_pause : bool = false
 
@@ -11,9 +12,13 @@ func get_player_pos() -> Vector2:
 
 func _process(delta: float) -> void:
 	label_hp.text = "HP: " + str(int(player.hp))
+	label_score.text = "Score: " + str(int(score))
+	print(score)
 	if player.hp <= 0:
 		is_lose = true
 		$UI/Lose.visible = true
+	if not is_lose:
+		score += delta
 	
 func attack_player() -> void:
 	if is_lose:

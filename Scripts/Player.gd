@@ -5,7 +5,7 @@ enum MOVE_MODE {
 	JOYSTICK
 }
 
-@export var move_mode : MOVE_MODE = MOVE_MODE.JOYSTICK
+@export var move_mode : MOVE_MODE = MOVE_MODE.TOUCH
 @export var move_speed : float = 250
 @export var move_speed_far : float = 0.033
 @export var move_speed_near : float = move_area_r ** 2 * 3 * move_speed_far
@@ -14,7 +14,7 @@ enum MOVE_MODE {
 @export var joystick : VirtualJoystick
 @export var polygon : Polygon2D
 @export var hp : float = 0
-var HP : float = 5
+var HP : float = 1
 @export var invincible_second : float = 0
 const INVINCIBLE_SECOND : float = 4
 var is_lose : bool = false
