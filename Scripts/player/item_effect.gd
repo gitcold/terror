@@ -1,25 +1,29 @@
 extends Node
 
-func item_counting(item_count : Dictionary, delta : float, timer : Timer) -> void:
-	for i in item_count:
-		if item_count[i] > 0:
-			item_count[i] -= delta
-			if item_count[i] <= 0:
-				item_count[i] = -INF
-		if item_count[i] == -INF:
+static func item_counting(player : CharacterBody2D, delta : float) -> void:
+	for i in player.item_count:
+		if player.item_count[i] > 0:
+			player.item_count[i] -= delta
+			if player.item_count[i] <= 0:
+				player.item_count[i] = -INF
+		if player.item_count[i] == -INF:
 			match i:
 				"BulletSpeeder":
-					timer.wait_time = 0.4
+					player.timer.wait_time = 0.4
+				"HealthBag":
+					if player.hp < player.HP_MAX:
+						player.hp += 1
 				_:
 					pass
-			item_count[i] = 0
-	print(item_count)
+			player.item_count[i] = 0
 
-func item_effecting(item_count : Dictionary, delta : float, timer : Timer) -> void:
-	for i in item_count:
-		if item_count[i] > 0:
+static func item_effecting(player : CharacterBody2D) -> void:
+	for i in player.item_count:
+		if player.item_count[i] > 0:
 			match i:
 				"BulletSpeeder":
-					timer.wait_time = 0.1
+					player.timer.wait_time = 0.1
+				"HealthBag":
+					pass
 				_:
 					pass

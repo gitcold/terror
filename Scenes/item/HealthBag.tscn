@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://b1vn8w06rn6mt"]
+
+[ext_resource type="Script" uid="uid://oq60x8abjuwc" path="res://Scripts/item/HealthBag.gd" id="1_yr60n"]
+[ext_resource type="Texture2D" uid="uid://o7edc31w46dj" path="res://assets/item/HealthBag.png" id="2_yr60n"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(24, 16)
+
+[node name="HealthBag" type="Area2D" unique_id=651272272]
+script = ExtResource("1_yr60n")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=112775728]
+texture = ExtResource("2_yr60n")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=57353655]
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

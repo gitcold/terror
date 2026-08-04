@@ -7,6 +7,12 @@ var spawn_data : Array[Dictionary] = [
 		"name"="BulletSpeeder",
 		"first_count"=Vector2(12, 15),
 	},
+	{
+		"count"=Vector2(10, 15),
+		"distance"=50,
+		"name"="HealthBag",
+		"first_count"=Vector2(20, 25),
+	},
 ]
 
 var spawn_count : Array

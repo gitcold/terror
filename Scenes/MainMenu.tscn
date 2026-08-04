@@ -48,7 +48,7 @@ offset_right = 40.0
 offset_bottom = -40.99997
 grow_vertical = 0
 scale = Vector2(2.7784915, 2.7784915)
-text = "v 0.1"
+text = "v 0.1.1"
 
 [node name="Auther" type="Label" parent="." unique_id=863378257]
 layout_mode = 1

@@ -49,6 +49,7 @@ shape = SubResource("WorldBoundaryShape2D_g7b7a")
 [node name="Player" parent="." unique_id=1493253394 node_paths=PackedStringArray("joystick") instance=ExtResource("1_iukft")]
 position = Vector2(378, 264)
 joystick = NodePath("../UI/VirtualJoystick")
+item_count = {}
 metadata/_edit_group_ = true
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=945491941]
