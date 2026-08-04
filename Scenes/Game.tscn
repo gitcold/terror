@@ -2,7 +2,6 @@
 
 [ext_resource type="PackedScene" uid="uid://hl0aym5br8po" path="res://Scenes/player/Player.tscn" id="1_iukft"]
 [ext_resource type="Script" uid="uid://d65bt4uee8y1" path="res://Scripts/GameManager.gd" id="1_j5yw3"]
-[ext_resource type="PackedScene" uid="uid://cf7veh0vsnmg2" path="res://Scenes/item/BulletSpeeder.tscn" id="3_b2bpf"]
 [ext_resource type="Script" uid="uid://dipkdh56gvywk" path="res://Scripts/EnemySpawner.gd" id="3_kldst"]
 [ext_resource type="Script" uid="uid://brhlhy2oadlsm" path="res://Scripts/ItemSpawner.gd" id="4_kldst"]
 
@@ -51,8 +50,6 @@ shape = SubResource("WorldBoundaryShape2D_g7b7a")
 position = Vector2(378, 264)
 joystick = NodePath("../UI/VirtualJoystick")
 metadata/_edit_group_ = true
-
-[node name="BulletSpeeder" parent="." unique_id=651272272 instance=ExtResource("3_b2bpf")]
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=945491941]
 script = ExtResource("3_kldst")

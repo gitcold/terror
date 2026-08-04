@@ -6,10 +6,12 @@
 [sub_resource type="CircleShape2D" id="CircleShape2D_2m5a4"]
 radius = 5.785428
 
-[node name="Player" type="CharacterBody2D" unique_id=1493253394 node_paths=PackedStringArray("polygon") groups=["player"]]
+[node name="Player" type="CharacterBody2D" unique_id=1493253394 node_paths=PackedStringArray("polygon", "timer") groups=["player"]]
 script = ExtResource("1_rpqav")
 bullet_scene = ExtResource("2_kyqiw")
 polygon = NodePath("Polygon2D")
+timer = NodePath("Timer")
+item_count = null
 
 [node name="AimAssistLine" type="Polygon2D" parent="." unique_id=697764090]
 position = Vector2(0, -4.7683716e-07)

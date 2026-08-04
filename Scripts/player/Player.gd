@@ -13,6 +13,7 @@ var move_area_r : float = 35
 @export var bullet_scene : PackedScene
 @export var joystick : VirtualJoystick
 @export var polygon : Polygon2D
+@export var timer : Timer
 var hp : float = 0
 var HP : float = 5
 var invincible_second : float = 0
@@ -21,7 +22,9 @@ const INVINCIBLE_SECOND : float = 4
 var item_effect = preload("res://Scripts/player/item_effect.gd")
 var item_effecter = item_effect.new()
 
+
 func _ready() -> void:
+	timer.wait_time = 0.4
 	hp = HP
 	match move_mode:
 		MOVE_MODE.TOUCH:
@@ -68,8 +71,8 @@ func _physics_process(delta: float) -> void:
 		invincible_second -= delta
 	polygon.modulate.a = cos(invincible_second * 12)
 	#item倒计时
-	item_effecter.item_effecting(item_count, delta)
-	item_effecter.item_counting(item_count, delta)
+	item_effecter.item_effecting(item_count, delta, timer)
+	item_effecter.item_counting(item_count, delta, timer)
 	
 	
 func _on_fire() -> void:

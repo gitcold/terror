@@ -22,8 +22,7 @@ var spawn_data : Array[Dictionary] = [
 ]
 
 var spawn_count : Array
-var enemy_num = 3
-var is_lose : bool = false
+var enemy_num = spawn_data.size()
 
 func _ready() -> void:
 	randomize()

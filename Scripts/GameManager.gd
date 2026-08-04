@@ -51,4 +51,4 @@ func _on_button_pause_pressed() -> void:
 		$UI/Menu.visible = true
 
 func give_player_item(item_name : String, item_count : float) -> void:
-	player.item_count[item_name] = item_count
+	player.item_count[item_name] += item_count
