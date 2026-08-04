@@ -33,16 +33,16 @@ func _ready() -> void:
 			joystick.visible = true
 	
 	#自动获取item名称组成字典
-	var dir = DirAccess.open("res://Scenes/item/")
-	if dir == null:
-		print("错误：无法打开文件夹 res://Scenes/item/")
-	else:
-		var file_names = dir.get_files()
-		for file in file_names:
-			if file.ends_with(".tscn"):
-				var scene_name = file.replace(".tscn", "")
-				item_count[scene_name] = 0
-	
+	#var dir = DirAccess.open("res://Scenes/item/")
+	#if dir == null:
+	#	print("错误：无法打开文件夹 res://Scenes/item/")
+	#else:
+	#	var file_names = dir.get_files()
+	#	for file in file_names:
+	#		if file.ends_with(".tscn"):
+	#			var scene_name = file.replace(".tscn", "")
+	#			item_count[scene_name] = 0
+	item_count = {"BulletSpeeder": 0,"HealthBag": 0,}
 	
 	
 func _physics_process(delta: float) -> void:
