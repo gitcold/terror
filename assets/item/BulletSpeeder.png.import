@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://1b47v0wtf1ju"
-path="res://.godot/imported/OrangeBall.png-f7794c8a3b9a956827123e6a5674c956.ctex"
+uid="uid://cu85ibu6y36yv"
+path="res://.godot/imported/BulletSpeeder.png-57874391e65bd7b99b531c343fe84278.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/OrangeBall.png"
-dest_files=["res://.godot/imported/OrangeBall.png-f7794c8a3b9a956827123e6a5674c956.ctex"]
+source_file="res://assets/item/BulletSpeeder.png"
+dest_files=["res://.godot/imported/BulletSpeeder.png-57874391e65bd7b99b531c343fe84278.ctex"]
 
 [params]
 

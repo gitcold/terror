@@ -29,22 +29,12 @@ func attack_player() -> void:
 
 
 func _on_restart_pressed() -> void:
-	is_lose = false
-	is_pause = false
 	get_tree().paused = false
-	$UI/Pause.visible = false
-	$UI/Lose.visible = false
-	$UI/Menu.visible = false
 	get_tree().change_scene_to_file("res://Scenes/Game.tscn")
 
 
 func _on_quit_pressed() -> void:
-	is_lose = false
-	is_pause = false
 	get_tree().paused = false
-	$UI/Pause.visible = false
-	$UI/Lose.visible = false
-	$UI/Menu.visible = false
 	get_tree().change_scene_to_file("res://Scenes/MainMenu.tscn")
 
 
@@ -59,3 +49,6 @@ func _on_button_pause_pressed() -> void:
 		get_tree().paused = true
 		$UI/Pause.visible = true
 		$UI/Menu.visible = true
+
+func give_player_item(item_name : String, item_count : float) -> void:
+	player.item_count[item_name] = item_count

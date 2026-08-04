@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://lwjhj6spaqpk"
-path="res://.godot/imported/BigYellow.png-fc8f2f1d9d29048f78feba4218587640.ctex"
+uid="uid://1b47v0wtf1ju"
+path="res://.godot/imported/OrangeBall.png-c30659ea6581871c19f7557edff6fd12.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://assets/BigYellow.png"
-dest_files=["res://.godot/imported/BigYellow.png-fc8f2f1d9d29048f78feba4218587640.ctex"]
+source_file="res://assets/enemy/OrangeBall.png"
+dest_files=["res://.godot/imported/OrangeBall.png-c30659ea6581871c19f7557edff6fd12.ctex"]
 
 [params]
 

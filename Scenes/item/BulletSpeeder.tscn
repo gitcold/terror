@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cf7veh0vsnmg2"]
+
+[ext_resource type="Script" uid="uid://bk83s67gobg83" path="res://Scripts/item/BulletSpeeder.gd" id="1_e0yy8"]
+[ext_resource type="Texture2D" uid="uid://cu85ibu6y36yv" path="res://assets/item/BulletSpeeder.png" id="1_nkvcl"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(24, 16)
+
+[node name="BulletSpeeder" type="Area2D" unique_id=651272272]
+script = ExtResource("1_e0yy8")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=112775728]
+texture = ExtResource("1_nkvcl")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=57353655]
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

@@ -5,19 +5,21 @@ enum MOVE_MODE {
 	JOYSTICK
 }
 
-@export var move_mode : MOVE_MODE = MOVE_MODE.TOUCH
-@export var move_speed : float = 250
-@export var move_speed_far : float = 0.033
-@export var move_speed_near : float = move_area_r ** 2 * 3 * move_speed_far
+var move_mode : MOVE_MODE = MOVE_MODE.TOUCH
+var move_speed : float = 250
+var move_speed_far : float = 0.033
+var move_speed_near : float = move_area_r ** 2 * 3 * move_speed_far
+var move_area_r : float = 35
 @export var bullet_scene : PackedScene
-@export var move_area_r : float = 35
 @export var joystick : VirtualJoystick
 @export var polygon : Polygon2D
-@export var hp : float = 0
+var hp : float = 0
 var HP : float = 5
-@export var invincible_second : float = 0
+var invincible_second : float = 0
 const INVINCIBLE_SECOND : float = 4
-var is_lose : bool = false
+@export var item_count : Dictionary
+var item_effect = preload("res://Scripts/player/item_effect.gd")
+var item_effecter = item_effect.new()
 
 func _ready() -> void:
 	hp = HP
@@ -27,8 +29,20 @@ func _ready() -> void:
 		MOVE_MODE.JOYSTICK:
 			joystick.visible = true
 	
+	#自动获取item名称组成字典
+	var dir = DirAccess.open("res://Scenes/item/")
+	if dir == null:
+		print("错误：无法打开文件夹 res://Scenes/item/")
+	else:
+		var file_names = dir.get_files()
+		for file in file_names:
+			if file.ends_with(".tscn"):
+				var scene_name = file.replace(".tscn", "")
+				item_count[scene_name] = 0
+	
+	
+	
 func _physics_process(delta: float) -> void:
-	is_lose = get_tree().current_scene.is_lose
 	velocity = Input.get_vector("left", "right", "up", "down") * move_speed
 	match move_mode:
 		MOVE_MODE.TOUCH:
@@ -49,12 +63,15 @@ func _physics_process(delta: float) -> void:
 		MOVE_MODE.JOYSTICK:
 			look_at(position + velocity)
 	move_and_slide()
+	#无敌帧
 	if invincible_second > 0:
 		invincible_second -= delta
 	polygon.modulate.a = cos(invincible_second * 12)
+	#item倒计时
+	item_effecter.item_effecting(item_count, delta)
+	item_effecter.item_counting(item_count, delta)
 	
 	
-
 func _on_fire() -> void:
 	var bullet_node = bullet_scene.instantiate()
 	var theta = rotation

@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://c7btsohy1k5bi"]
 
-[ext_resource type="Script" uid="uid://gsci8tofnjdm" path="res://Scripts/BigYellow.gd" id="1_mo5d6"]
-[ext_resource type="Texture2D" uid="uid://lwjhj6spaqpk" path="res://assets/BigYellow.png" id="2_mo5d6"]
+[ext_resource type="Script" uid="uid://gsci8tofnjdm" path="res://Scripts/enemy/BigYellow.gd" id="1_mo5d6"]
+[ext_resource type="Texture2D" uid="uid://lwjhj6spaqpk" path="res://assets/enemy/BigYellow.png" id="2_mo5d6"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g7b7a"]
 radius = 14.0

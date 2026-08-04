@@ -1,7 +1,7 @@
 [gd_scene format=3 uid="uid://droge15x262ds"]
 
-[ext_resource type="Script" uid="uid://ckmfl47i2cebq" path="res://Scripts/OrangeBall.gd" id="1_6plcg"]
-[ext_resource type="Texture2D" uid="uid://1b47v0wtf1ju" path="res://assets/OrangeBall.png" id="2_6plcg"]
+[ext_resource type="Script" uid="uid://ckmfl47i2cebq" path="res://Scripts/enemy/OrangeBall.gd" id="1_6plcg"]
+[ext_resource type="Texture2D" uid="uid://1b47v0wtf1ju" path="res://assets/enemy/OrangeBall.png" id="2_6plcg"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_g7b7a"]
 radius = 14.0
