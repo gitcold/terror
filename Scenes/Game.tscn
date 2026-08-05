@@ -2,6 +2,7 @@
 
 [ext_resource type="PackedScene" uid="uid://hl0aym5br8po" path="res://Scenes/player/Player.tscn" id="1_iukft"]
 [ext_resource type="Script" uid="uid://d65bt4uee8y1" path="res://Scripts/GameManager.gd" id="1_j5yw3"]
+[ext_resource type="PackedScene" uid="uid://dsh1pwc051as1" path="res://Scenes/enemy/GreenStar.tscn" id="3_3so38"]
 [ext_resource type="Script" uid="uid://dipkdh56gvywk" path="res://Scripts/EnemySpawner.gd" id="3_kldst"]
 [ext_resource type="Script" uid="uid://brhlhy2oadlsm" path="res://Scripts/ItemSpawner.gd" id="4_kldst"]
 [ext_resource type="AudioStream" uid="uid://bgtjfg0gxnfjs" path="res://assets/music/哈德曼的妖怪少女.mp3" id="5_b2bpf"]
@@ -57,6 +58,17 @@ shape = SubResource("WorldBoundaryShape2D_g7b7a")
 position = Vector2(378, 264)
 joystick = NodePath("../UI/VirtualJoystick")
 metadata/_edit_group_ = true
+
+[node name="GreenStar" parent="." unique_id=1185939940 instance=ExtResource("3_3so38")]
+position = Vector2(223, 177)
+
+[node name="GreenStar2" parent="." unique_id=870721736 instance=ExtResource("3_3so38")]
+
+[node name="GreenStar3" parent="." unique_id=1412656625 instance=ExtResource("3_3so38")]
+
+[node name="GreenStar4" parent="." unique_id=2017713195 instance=ExtResource("3_3so38")]
+
+[node name="GreenStar5" parent="." unique_id=1103085295 instance=ExtResource("3_3so38")]
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=945491941]
 script = ExtResource("3_kldst")

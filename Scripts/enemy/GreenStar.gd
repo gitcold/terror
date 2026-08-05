@@ -1,22 +1,25 @@
 extends CharacterBody2D
 
-@export var speed : float = 45
-@export var counter : float = INF
-@export var hp : float = 15
-@export var move_area_r : float = 10
+var speed : float = 150
+var counter : float = INF
+var hp : float = 30
+var dir : float = 0
 
 var is_dead : bool = false
 var is_player_in : bool = false
 
+@export var head_texture : Sprite2D
+@export var head_shape : CollisionPolygon2D
+
+func _ready() -> void:
+	randomize()
+	dir = randf_range(0, 360)
+	position = Vector2(400, 240) + Vector2.from_angle(dir) * -800
+	rotation = dir
+
 func _physics_process(delta: float) -> void:
-	var player_pos = get_tree().current_scene.get_player_pos()
-	var distance = position.distance_to(player_pos)
 	if not is_dead:
-		look_at(player_pos)
-		if distance >= move_area_r:
-			velocity = (player_pos-position).normalized() * speed
-		else:
-			velocity = Vector2.ZERO
+		velocity = Vector2.from_angle(dir) * speed
 	move_and_slide()
 	if is_player_in:
 		get_tree().current_scene.attack_player()
@@ -27,7 +30,9 @@ func _physics_process(delta: float) -> void:
 		is_dead = true
 	if is_dead:
 		queue_free()
-
+	
+	head_shape.rotation += 3 * delta
+	head_texture.rotation += 3 * delta
 
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):

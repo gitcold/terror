@@ -1,0 +1,39 @@
+[gd_scene format=3 uid="uid://dsh1pwc051as1"]
+
+[ext_resource type="Script" uid="uid://p7xsrwe853tp" path="res://Scripts/enemy/GreenStar.gd" id="1_jfbl4"]
+[ext_resource type="Texture2D" uid="uid://yg7ajddqpt8t" path="res://assets/enemy/GreenStar.png" id="2_jfbl4"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(880, 16)
+
+[node name="GreenStar" type="CharacterBody2D" unique_id=1185939940 node_paths=PackedStringArray("head_texture", "head_shape")]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_jfbl4")
+head_texture = NodePath("HeadTexture")
+head_shape = NodePath("Area2D/HeadShape")
+
+[node name="BodyTexture" type="Polygon2D" parent="." unique_id=1134632269]
+color = Color(0.5294118, 0.98039216, 0.2627451, 1)
+polygon = PackedVector2Array(-8, -8.000001, -887.99994, -8, -887.99994, 8, -8, 8.000005)
+uv = PackedVector2Array(72, -23.999998, -128, -23.999998, -128, -16, 72, -16)
+
+[node name="HeadTexture" type="Sprite2D" parent="." unique_id=1370188911]
+scale = Vector2(1.215031, 1.215031)
+texture = ExtResource("2_jfbl4")
+
+[node name="HeadShape" type="CollisionPolygon2D" parent="." unique_id=1689032964]
+polygon = PackedVector2Array(31, -12, 12, -12, 3, -35, -4, -13, -35, -13, -10, 4, -17, 32, 3, 12, 31, 33, 16, 1)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=864548962]
+
+[node name="BodyShape" type="CollisionShape2D" parent="Area2D" unique_id=1114950782]
+position = Vector2(-448, 0)
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[node name="HeadShape" type="CollisionPolygon2D" parent="Area2D" unique_id=855250940]
+polygon = PackedVector2Array(31, -12, 12, -12, 3, -35, -4, -13, -35, -13, -10, 4, -17, 32, 3, 12, 31, 33, 16, 1)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

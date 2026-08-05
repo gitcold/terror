@@ -1,0 +1,25 @@
+[gd_scene format=3 uid="uid://dxf5mkv3xjhw"]
+
+[ext_resource type="Script" uid="uid://bk6baay5v0c0d" path="res://Scripts/enemy/YellowTriangle.gd" id="1_jls30"]
+[ext_resource type="Texture2D" uid="uid://b7vgh36hkm3cf" path="res://assets/enemy/YellowTriangle.png" id="2_jls30"]
+
+[node name="YellowTriangle" type="CharacterBody2D" unique_id=1185939940]
+collision_layer = 8
+collision_mask = 8
+script = ExtResource("1_jls30")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1370188911]
+scale = Vector2(0.68006206, 0.68006206)
+texture = ExtResource("2_jls30")
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="." unique_id=1259135593]
+polygon = PackedVector2Array(9, 0, -10, -5, -10, 5)
+
+[node name="Area2D" type="Area2D" parent="." unique_id=864548962]
+
+[node name="CollisionPolygon2D" type="CollisionPolygon2D" parent="Area2D" unique_id=1167367537]
+polygon = PackedVector2Array(9, 0, -10, -5, -10, 5)
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

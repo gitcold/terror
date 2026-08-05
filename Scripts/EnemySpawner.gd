@@ -19,6 +19,18 @@ var spawn_data : Array[Dictionary] = [
 		"name"="BigYellow",
 		"first_count"=15,
 	},
+	{
+		"count"=Vector2(3, 7),
+		"distance"=150,
+		"name"="YellowTriangle",
+		"first_count"=20,
+	},
+	{
+		"count"=Vector2(5, 17),
+		"distance"=0,
+		"name"="GreenStar",
+		"first_count"=30,
+	},
 ]
 
 var spawn_count : Array
