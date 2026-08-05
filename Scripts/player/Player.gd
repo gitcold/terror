@@ -10,7 +10,12 @@ var move_speed : float = 250
 var move_speed_far : float = 0.033
 var move_speed_near : float = move_area_r ** 2 * 3 * move_speed_far
 var move_area_r : float = 35
+var bullet_offset : float = 13
+var bullet_size : float = 1
 @export var bullet_scene : PackedScene
+@export var laser_scene : PackedScene
+@export var electric_bead_scene : PackedScene
+@export var bullet_type : PackedScene
 @export var joystick : VirtualJoystick
 @export var polygon : Polygon2D
 @export var timer : Timer
@@ -26,23 +31,21 @@ var item_effect = preload("res://Scripts/player/item_effect.gd")
 func _ready() -> void:
 	timer.wait_time = 0.4
 	hp = HP
+	bullet_type = bullet_scene
 	match move_mode:
 		MOVE_MODE.TOUCH:
 			joystick.visible = false
 		MOVE_MODE.JOYSTICK:
 			joystick.visible = true
 	
-	#自动获取item名称组成字典
-	#var dir = DirAccess.open("res://Scenes/item/")
-	#if dir == null:
-	#	print("错误：无法打开文件夹 res://Scenes/item/")
-	#else:
-	#	var file_names = dir.get_files()
-	#	for file in file_names:
-	#		if file.ends_with(".tscn"):
-	#			var scene_name = file.replace(".tscn", "")
-	#			item_count[scene_name] = 0
-	item_count = {"BulletSpeeder": 0,"HealthBag": 0,}
+	item_count = {
+		"BulletSpeeder": 0,
+		"HealthBag": 0,
+		"BulletBigger": 0,
+		"Laser": 0,
+		"Sunshine": 0,
+		"ElectricBead": 0,
+		}
 	
 	
 func _physics_process(delta: float) -> void:
@@ -76,12 +79,13 @@ func _physics_process(delta: float) -> void:
 	
 	
 func _on_fire() -> void:
-	var bullet_node = bullet_scene.instantiate()
+	var bullet_node = bullet_type.instantiate()
 	var theta = rotation
 	var bullet_direction = Vector2(cos(theta), sin(theta))
 	bullet_node.direction = bullet_direction
 	bullet_node.rotation = rotation
-	bullet_node.position = position + bullet_direction * 13
+	bullet_node.position = position + bullet_direction * bullet_offset
+	bullet_node.scale *= Vector2(bullet_size, bullet_size)
 	get_tree().current_scene.add_child(bullet_node)
 
 

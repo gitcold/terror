@@ -23,13 +23,13 @@ var spawn_data : Array[Dictionary] = [
 		"count"=Vector2(3, 7),
 		"distance"=150,
 		"name"="YellowTriangle",
-		"first_count"=20,
+		"first_count"=35,
 	},
 	{
 		"count"=Vector2(5, 17),
 		"distance"=0,
 		"name"="GreenStar",
-		"first_count"=30,
+		"first_count"=50,
 	},
 ]
 

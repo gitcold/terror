@@ -1,7 +1,9 @@
 [gd_scene format=3 uid="uid://hl0aym5br8po"]
 
 [ext_resource type="Script" uid="uid://cxer8mvhlq13h" path="res://Scripts/player/Player.gd" id="1_rpqav"]
-[ext_resource type="PackedScene" uid="uid://cx3sa0ftpqaqa" path="res://Scenes/player/Bullet.tscn" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://cx3sa0ftpqaqa" path="res://Scenes/bullet/Bullet.tscn" id="2_kyqiw"]
+[ext_resource type="PackedScene" uid="uid://drcj3xfms8o3t" path="res://Scenes/bullet/Laser.tscn" id="3_r5va5"]
+[ext_resource type="PackedScene" uid="uid://h7aojama7s5u" path="res://Scenes/bullet/ElectricBead.tscn" id="4_mphk7"]
 
 [sub_resource type="CircleShape2D" id="CircleShape2D_2m5a4"]
 radius = 5.785428
@@ -9,6 +11,8 @@ radius = 5.785428
 [node name="Player" type="CharacterBody2D" unique_id=1493253394 node_paths=PackedStringArray("polygon", "timer") groups=["player"]]
 script = ExtResource("1_rpqav")
 bullet_scene = ExtResource("2_kyqiw")
+laser_scene = ExtResource("3_r5va5")
+electric_bead_scene = ExtResource("4_mphk7")
 polygon = NodePath("Polygon2D")
 timer = NodePath("Timer")
 

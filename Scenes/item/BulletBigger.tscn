@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://bt2xerr17dvvd"]
+
+[ext_resource type="Script" uid="uid://b8n83gaqs6d6j" path="res://Scripts/item/BulletBigger.gd" id="1_hg0ec"]
+[ext_resource type="Texture2D" uid="uid://csfbxfislfhlu" path="res://assets/item/BulletBigger.png" id="2_tc2x8"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(24, 16)
+
+[node name="BulletBigger" type="Area2D" unique_id=651272272]
+script = ExtResource("1_hg0ec")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=112775728]
+texture = ExtResource("2_tc2x8")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=57353655]
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

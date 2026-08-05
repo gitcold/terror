@@ -1,0 +1,18 @@
+[gd_scene format=3 uid="uid://cjrkn8hcdjw0m"]
+
+[ext_resource type="Script" uid="uid://cp2rjj254nyny" path="res://Scripts/item/Laser.gd" id="1_nv7a7"]
+[ext_resource type="Texture2D" uid="uid://biamel7n8yb6j" path="res://assets/item/Laser.png" id="2_nv7a7"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
+size = Vector2(24, 16)
+
+[node name="Laser" type="Area2D" unique_id=651272272]
+script = ExtResource("1_nv7a7")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=112775728]
+texture = ExtResource("2_nv7a7")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=57353655]
+shape = SubResource("RectangleShape2D_g7b7a")
+
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]

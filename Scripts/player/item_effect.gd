@@ -13,6 +13,17 @@ static func item_counting(player : CharacterBody2D, delta : float) -> void:
 				"HealthBag":
 					if player.hp < player.HP_MAX:
 						player.hp += 1
+				"BulletBigger":
+					player.bullet_size = 1
+					player.bullet_offset = 13
+				"Laser":
+					player.bullet_type = player.bullet_scene
+					player.bullet_offset = 13
+				"Sunshine":
+					pass
+				"ElectricBead":
+					player.bullet_type = player.bullet_scene
+					player.bullet_offset = 13
 				_:
 					pass
 			player.item_count[i] = 0
@@ -25,5 +36,16 @@ static func item_effecting(player : CharacterBody2D) -> void:
 					player.timer.wait_time = 0.1
 				"HealthBag":
 					pass
+				"BulletBigger":
+					player.bullet_size = 3
+					player.bullet_offset = 19
+				"Laser":
+					player.bullet_type = player.laser_scene
+					player.bullet_offset = 19
+				"Sunshine":
+					pass
+				"ElectricBead":
+					player.bullet_type = player.electric_bead_scene
+					player.bullet_offset = 19
 				_:
 					pass
