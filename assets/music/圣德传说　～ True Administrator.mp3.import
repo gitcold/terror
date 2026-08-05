@@ -1,0 +1,19 @@
+[remap]
+
+importer="mp3"
+type="AudioStreamMP3"
+uid="uid://1tna7ndkq1qw"
+path="res://.godot/imported/圣德传说　～ True Administrator.mp3-1dc9549f9999a519c352d0d359ecbf18.mp3str"
+
+[deps]
+
+source_file="res://assets/music/圣德传说　～ True Administrator.mp3"
+dest_files=["res://.godot/imported/圣德传说　～ True Administrator.mp3-1dc9549f9999a519c352d0d359ecbf18.mp3str"]
+
+[params]
+
+loop=false
+loop_offset=0
+bpm=0
+beat_count=0
+bar_beats=4
