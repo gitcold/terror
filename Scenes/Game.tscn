@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cis1dhirdmrf6" path="res://assets/music/少女觉　～ 3rd eye.mp3" id="9_3cx6b"]
 [ext_resource type="AudioStream" uid="uid://dnekn0p3bg0rx" path="res://assets/music/欲望加速.mp3" id="10_wxwew"]
 [ext_resource type="AudioStream" uid="uid://c5odx3vdu52j6" path="res://assets/music/沉向空中的辉针城.mp3" id="11_acvyw"]
+[ext_resource type="PackedScene" uid="uid://2d14gnrqdk0c" path="res://Scenes/WavPlayer.tscn" id="12_3so38"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g7b7a"]
 distance = -2.0
@@ -65,7 +66,6 @@ script = ExtResource("3_kldst")
 script = ExtResource("4_kldst")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1816105921]
-stream = ExtResource("5_b2bpf")
 volume_db = -20.0
 autoplay = true
 script = ExtResource("6_7lihs")
@@ -179,6 +179,9 @@ offset_right = 313.0
 offset_bottom = 122.0
 scale = Vector2(5.0669227, 5.0669227)
 text = "Pause..."
+
+[node name="WavPlayer" parent="." unique_id=1364483773 instance=ExtResource("12_3so38")]
+process_mode = 3
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
 [connection signal="pressed" from="UI/Button_change" to="Player" method="_on_move_mode_change"]

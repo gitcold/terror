@@ -4,6 +4,10 @@ var speed : float = 150
 var counter : float = INF
 var hp : float = 30
 var dir : float = 0
+var WAV_PLAYER = preload("res://Scripts/play_wav.gd")
+var wav_player
+var current
+
 
 var is_dead : bool = false
 var is_player_in : bool = false
@@ -16,6 +20,8 @@ func _ready() -> void:
 	dir = randf_range(0, 360)
 	position = Vector2(400, 240) + Vector2.from_angle(dir) * -800
 	rotation = dir
+	wav_player = WAV_PLAYER.new()
+	current = get_tree().current_scene
 
 func _physics_process(delta: float) -> void:
 	if not is_dead:
@@ -29,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	if hp <= 0:
 		is_dead = true
 	if is_dead:
+		wav_player.play_wav("res://assets/wav/hitHurt.wav", current)
 		queue_free()
 	
 	head_shape.rotation += 3 * delta

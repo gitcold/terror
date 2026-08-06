@@ -4,9 +4,18 @@ extends CharacterBody2D
 @export var counter : float = INF
 @export var hp : float = 15
 @export var move_area_r : float = 10
+var WAV_PLAYER = preload("res://Scripts/play_wav.gd")
+var wav_player
+var current
+
 
 var is_dead : bool = false
 var is_player_in : bool = false
+
+func _ready() -> void:
+	wav_player = WAV_PLAYER.new()
+	current = get_tree().current_scene
+
 
 func _physics_process(delta: float) -> void:
 	var player_pos = get_tree().current_scene.get_player_pos()
@@ -26,6 +35,7 @@ func _physics_process(delta: float) -> void:
 	if hp <= 0:
 		is_dead = true
 	if is_dead:
+		wav_player.play_wav("res://assets/wav/hitHurt.wav", current)
 		queue_free()
 
 

@@ -6,6 +6,10 @@ var hp : float = 1
 var r : float = 75
 var move_area_r : float = r + 20
 var dir : float = 0
+var WAV_PLAYER = preload("res://Scripts/play_wav.gd")
+var wav_player
+var current
+
 
 var is_dead : bool = false
 var is_player_in : bool = false
@@ -13,6 +17,9 @@ var is_player_in : bool = false
 func _ready() -> void:
 	randomize()
 	dir = randf_range(0, 360)
+	wav_player = WAV_PLAYER.new()
+	current = get_tree().current_scene
+
 
 func _physics_process(delta: float) -> void:
 	var player_pos = get_tree().current_scene.get_player_pos()
@@ -34,11 +41,9 @@ func _physics_process(delta: float) -> void:
 	if hp <= 0:
 		is_dead = true
 	if is_dead:
+		wav_player.play_wav("res://assets/wav/hitHurt.wav", current)
 		queue_free()
 	
-	
-
-
 func _on_area_2d_body_entered(body: Node2D) -> void:
 	if body.is_in_group("player"):
 		is_player_in = true

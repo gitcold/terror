@@ -1,0 +1,5 @@
+[gd_scene format=3 uid="uid://2d14gnrqdk0c"]
+
+[node name="WavPlayer" type="AudioStreamPlayer" unique_id=1364483773]
+process_mode = 3
+autoplay = true
