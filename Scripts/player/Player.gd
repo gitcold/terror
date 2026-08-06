@@ -2,10 +2,11 @@ extends CharacterBody2D
 
 enum MOVE_MODE {
 	TOUCH,
-	JOYSTICK
+	JOYSTICK,
+	KEYBOARD,
 }
 
-var move_mode : MOVE_MODE = MOVE_MODE.TOUCH
+var move_mode : MOVE_MODE = MOVE_MODE.KEYBOARD
 var move_speed : float = 250
 var move_speed_far : float = 0.033
 var move_speed_near : float = move_area_r ** 2 * 3 * move_speed_far
@@ -49,11 +50,11 @@ func _ready() -> void:
 	
 	
 func _physics_process(delta: float) -> void:
-	velocity = Input.get_vector("left", "right", "up", "down") * move_speed
+	velocity = Vector2.ZERO
+	var mouse_pos = get_global_mouse_position()
 	match move_mode:
 		MOVE_MODE.TOUCH:
 			#朝向鼠标
-			var mouse_pos = get_global_mouse_position()
 			look_at(mouse_pos)
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
 				var local_mouse_pos = to_local(get_global_mouse_position())
@@ -62,12 +63,16 @@ func _physics_process(delta: float) -> void:
 				if distance >= move_area_distance:
 					var theta = rotation
 					if distance >= move_area_distance * 3:
-						velocity += Vector2(cos(theta), sin(theta)) * distance * move_speed_far
+						velocity = Vector2(cos(theta), sin(theta)) * distance * move_speed_far
 					else:
-						velocity += Vector2(cos(theta), sin(theta)) * move_speed_near
+						velocity = Vector2(cos(theta), sin(theta)) * move_speed_near
 					
 		MOVE_MODE.JOYSTICK:
+			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
 			look_at(position + velocity)
+		MOVE_MODE.KEYBOARD:
+			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
+			look_at(mouse_pos)
 	move_and_slide()
 	#无敌帧
 	if invincible_second > 0:
@@ -95,6 +100,8 @@ func _on_move_mode_change() -> void:
 			move_mode = MOVE_MODE.JOYSTICK
 			joystick.visible = true
 		MOVE_MODE.JOYSTICK:
+			move_mode = MOVE_MODE.KEYBOARD
+			joystick.visible = false
+		MOVE_MODE.KEYBOARD:
 			move_mode = MOVE_MODE.TOUCH
 			joystick.visible = false
-			

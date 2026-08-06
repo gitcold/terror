@@ -4,6 +4,7 @@ extends Node2D
 @export var player : CharacterBody2D
 @export var label_hp : Label
 @export var label_score : Label
+@export var label_move_mode : Label
 var is_lose : bool = false
 var is_pause : bool = false
 var WAV_PLAYER = preload("res://Scripts/play_wav.gd")
@@ -20,6 +21,9 @@ func get_player_pos() -> Vector2:
 func _process(delta: float) -> void:
 	label_hp.text = "HP: " + str(int(player.hp))
 	label_score.text = "Score: " + str(int(score))
+	label_move_mode.text = "Move Mode: " + str(player.MOVE_MODE.find_key(player.move_mode)).to_lower()
+	if Input.is_action_just_pressed("pause"):
+		_on_button_pause_pressed()
 	if player.hp <= 0:
 		is_lose = true
 		is_pause = true
