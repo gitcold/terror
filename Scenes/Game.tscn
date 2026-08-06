@@ -28,7 +28,7 @@ offset_right = 800.0
 offset_bottom = 480.0
 size_flags_horizontal = 4
 size_flags_vertical = 4
-color = Color(0.22267514, 0.22267514, 0.22267514, 1)
+color = Color(0.25490198, 0.25490198, 0.25490198, 1)
 metadata/_edit_lock_ = true
 
 [node name="Wall" type="Node2D" parent="." unique_id=1472976290]

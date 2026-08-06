@@ -1,0 +1,68 @@
+[gd_scene format=3 uid="uid://cfbikyuetwnsi"]
+
+[ext_resource type="Script" uid="uid://n3sfkyfxk6je" path="res://Scripts/Setting.gd" id="1_clo8n"]
+
+[node name="Setting" type="Control" unique_id=857660435]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+script = ExtResource("1_clo8n")
+
+[node name="Background" type="ColorRect" parent="." unique_id=1134386316]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 480.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.25490198, 0.25490198, 0.25490198, 1)
+metadata/_edit_lock_ = true
+
+[node name="Button_back" type="Button" parent="." unique_id=1095720921]
+layout_mode = 0
+offset_right = 8.0
+offset_bottom = 8.0
+scale = Vector2(2.8094625, 2.8094625)
+text = "Back"
+
+[node name="Button_change" type="Button" parent="." unique_id=1948460492]
+layout_mode = 0
+offset_left = 532.0
+offset_top = 164.0
+offset_right = 598.0
+offset_bottom = 195.0
+scale = Vector2(2.8094625, 2.8094625)
+text = "Change"
+
+[node name="MoveMode" type="Label" parent="." unique_id=852395455]
+layout_mode = 0
+offset_left = 27.0
+offset_top = 182.00002
+offset_right = 134.0
+offset_bottom = 205.00002
+scale = Vector2(1.9414736, 1.9414736)
+text = "Move Mode："
+
+[node name="Button_fog" type="Button" parent="." unique_id=463113681]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 259.00003
+offset_right = 572.0
+offset_bottom = 290.00003
+scale = Vector2(2.8094625, 2.8094625)
+text = "Fog"
+
+[node name="Fog" type="Label" parent="." unique_id=192540923]
+layout_mode = 0
+offset_left = 28.00003
+offset_top = 273.0
+offset_right = 72.00003
+offset_bottom = 296.0
+scale = Vector2(2.8094625, 2.8094625)
+text = "Fog："
+
+[connection signal="pressed" from="Button_back" to="." method="_on_button_back_pressed"]
+[connection signal="pressed" from="Button_change" to="." method="_on_button_change_pressed"]
+[connection signal="pressed" from="Button_fog" to="." method="_on_button_fog_pressed"]

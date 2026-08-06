@@ -14,3 +14,10 @@ shape = SubResource("RectangleShape2D_pypll")
 [node name="Polygon2D" type="Polygon2D" parent="." unique_id=1804487002]
 polygon = PackedVector2Array(-6.275716, -3.1378572, 6.275715, -3.1378572, 6.275715, 3.1378577, -6.275715, 3.1378582)
 uv = PackedVector2Array(-24, -8, 0, -8, 0, 0, -24, 0)
+
+[node name="Timer" type="Timer" parent="." unique_id=576244514]
+wait_time = 10.0
+one_shot = true
+autostart = true
+
+[connection signal="timeout" from="Timer" to="." method="_on_timer_timeout"]

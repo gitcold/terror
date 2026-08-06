@@ -11,6 +11,15 @@ grow_horizontal = 2
 grow_vertical = 2
 script = ExtResource("1_tt5f1")
 
+[node name="Background" type="ColorRect" parent="." unique_id=277383126]
+layout_mode = 0
+offset_right = 800.0
+offset_bottom = 480.0
+size_flags_horizontal = 4
+size_flags_vertical = 4
+color = Color(0.25490198, 0.25490198, 0.25490198, 1)
+metadata/_edit_lock_ = true
+
 [node name="Title" type="Label" parent="." unique_id=836230173]
 layout_mode = 0
 offset_left = 214.0
@@ -22,19 +31,19 @@ text = "Terror"
 
 [node name="Button_play" type="Button" parent="." unique_id=527441086]
 layout_mode = 0
-offset_left = 334.5
-offset_top = 201.0
-offset_right = 383.5
-offset_bottom = 232.0
+offset_left = 336.00003
+offset_top = 167.0
+offset_right = 385.00003
+offset_bottom = 198.0
 scale = Vector2(3.0410714, 3.0410714)
 text = "Play"
 
 [node name="Button_quit" type="Button" parent="." unique_id=1284982892]
 layout_mode = 0
-offset_left = 334.5
-offset_top = 297.81107
-offset_right = 383.5
-offset_bottom = 328.81107
+offset_left = 336.00003
+offset_top = 360.00003
+offset_right = 385.00003
+offset_bottom = 391.00003
 scale = Vector2(3.0410714, 3.0410714)
 text = "Quit"
 
@@ -66,5 +75,15 @@ grow_vertical = 0
 scale = Vector2(2.6855516, 2.6855516)
 text = "by: BlueIce1437"
 
+[node name="Button_setting" type="Button" parent="." unique_id=2133222435]
+layout_mode = 0
+offset_left = 315.0
+offset_top = 263.0
+offset_right = 378.0
+offset_bottom = 294.0
+scale = Vector2(3.041, 3.041)
+text = "Setting"
+
 [connection signal="pressed" from="Button_play" to="." method="_on_button_play_pressed"]
 [connection signal="pressed" from="Button_quit" to="." method="_on_button_quit_pressed"]
+[connection signal="pressed" from="Button_setting" to="." method="_on_button_setting_pressed"]

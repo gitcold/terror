@@ -1,12 +1,5 @@
 extends CharacterBody2D
 
-enum MOVE_MODE {
-	TOUCH,
-	JOYSTICK,
-	KEYBOARD,
-}
-
-var move_mode : MOVE_MODE = MOVE_MODE.KEYBOARD
 var move_speed : float = 250
 var move_speed_far : float = 0.033
 var move_speed_near : float = move_area_r ** 2 * 3 * move_speed_far
@@ -29,17 +22,16 @@ const INVINCIBLE_SECOND : float = 4
 @export var item_count : Dictionary
 var item_effect = preload("res://Scripts/player/item_effect.gd")
 var light_x : float = 0
+var setting = preload("res://Scripts/Setting.gd")
 
 func _ready() -> void:
 	timer.wait_time = 0.4
 	hp = HP
 	bullet_type = bullet_scene
-	match move_mode:
-		MOVE_MODE.TOUCH:
-			joystick.visible = false
-		MOVE_MODE.JOYSTICK:
-			joystick.visible = true
-	
+	if Global.is_fog:
+		light.visible = true
+	else:
+		light.visible = false
 	item_count = {
 		"BulletSpeeder": 0,
 		"HealthBag": 0,
@@ -53,8 +45,8 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	var mouse_pos = get_global_mouse_position()
-	match move_mode:
-		MOVE_MODE.TOUCH:
+	match Global.move_mode:
+		Global.MOVE_MODE.TOUCH:
 			#朝向鼠标
 			look_at(mouse_pos)
 			if Input.is_mouse_button_pressed(MOUSE_BUTTON_LEFT):
@@ -68,10 +60,10 @@ func _physics_process(delta: float) -> void:
 					else:
 						velocity = Vector2(cos(theta), sin(theta)) * move_speed_near
 					
-		MOVE_MODE.JOYSTICK:
+		Global.MOVE_MODE.JOYSTICK:
 			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
 			look_at(position + velocity)
-		MOVE_MODE.KEYBOARD:
+		Global.MOVE_MODE.KEYBOARD:
 			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
 			look_at(mouse_pos)
 	move_and_slide()
@@ -84,7 +76,11 @@ func _physics_process(delta: float) -> void:
 	#item倒计时
 	item_effect.item_effecting(self, delta)
 	item_effect.item_counting(self, delta)
-	
+	if Global.move_mode == Global.MOVE_MODE.VIRTUAL_JOYSTICK:
+		joystick.visible = true
+	else:
+		joystick.visible = false
+
 	
 func _on_fire() -> void:
 	var bullet_node = bullet_type.instantiate()
@@ -98,13 +94,4 @@ func _on_fire() -> void:
 
 
 func _on_move_mode_change() -> void:
-	match move_mode:
-		MOVE_MODE.TOUCH:
-			move_mode = MOVE_MODE.JOYSTICK
-			joystick.visible = true
-		MOVE_MODE.JOYSTICK:
-			move_mode = MOVE_MODE.KEYBOARD
-			joystick.visible = false
-		MOVE_MODE.KEYBOARD:
-			move_mode = MOVE_MODE.TOUCH
-			joystick.visible = false
+	setting._on_button_change_pressed()

@@ -14,6 +14,10 @@ var current
 func _ready() -> void:
 	wav_player = WAV_PLAYER.new()
 	current = get_tree().current_scene
+	if Global.is_fog:
+		$CanvasModulate.visible = true
+	else:
+		$CanvasModulate.visible = false
 
 func get_player_pos() -> Vector2:
 	return player.position
@@ -21,7 +25,7 @@ func get_player_pos() -> Vector2:
 func _process(delta: float) -> void:
 	label_hp.text = "HP: " + str(int(player.hp))
 	label_score.text = "Score: " + str(int(score))
-	label_move_mode.text = "Move Mode: " + str(player.MOVE_MODE.find_key(player.move_mode)).to_lower()
+	label_move_mode.text = "Move Mode: " + str(Global.MOVE_MODE.find_key(Global.move_mode)).to_lower()
 	if Input.is_action_just_pressed("pause"):
 		_on_button_pause_pressed()
 	if player.hp <= 0:
