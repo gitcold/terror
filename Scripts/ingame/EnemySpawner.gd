@@ -1,48 +1,17 @@
 extends Node2D
 
-var spawn_data : Array[Dictionary] = [
-	{
-		"count"=Vector2(0.1, 2),
-		"distance"=150,
-		"name"="OrangeBall",
-		"first_count"=3,
-	},
-	{
-		"count"=Vector2(2, 4),
-		"distance"=150,
-		"name"="CyanSquare",
-		"first_count"=4,
-	},
-	{
-		"count"=Vector2(8, 15),
-		"distance"=200,
-		"name"="BigYellow",
-		"first_count"=15,
-	},
-	{
-		"count"=Vector2(3, 5),
-		"distance"=150,
-		"name"="YellowTriangle",
-		"first_count"=35,
-	},
-	{
-		"count"=Vector2(5, 17),
-		"distance"=0,
-		"name"="GreenStar",
-		"first_count"=50,
-	},
-	{
-		"count"=Vector2(8, 15),
-		"distance"=0,
-		"name"="Sprite",
-		"first_count"=20,
-	},
-]
+var data = preload("res://data/enemy_data.gd")
+var spawn_data
 
+var enemy_num
 var spawn_count : Array
-var enemy_num = spawn_data.size()
 
 func _ready() -> void:
+	if Global.is_easy:
+		spawn_data = data.easy_spawn_data
+	else:
+		spawn_data = data.hard_spawn_data
+	enemy_num = spawn_data.size()
 	randomize()
 	for i in range(enemy_num):
 		spawn_count.append(spawn_data[i]["first_count"]) 

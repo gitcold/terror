@@ -15,6 +15,8 @@ func _ready() -> void:
 	current = get_tree().current_scene
 	
 func _process(delta: float) -> void:
+	if not Global.is_lightning:
+		return
 	spawn_count -= delta
 	if spawn_count <= 0:
 		spawn_count = randf_range(count.x, count.y)

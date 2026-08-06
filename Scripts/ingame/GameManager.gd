@@ -5,6 +5,7 @@ extends Node2D
 @export var label_hp : Label
 @export var label_score : Label
 @export var label_move_mode : Label
+@export var label_difficult : Label
 var is_lose : bool = false
 var is_pause : bool = false
 var WAV_PLAYER = preload("res://Scripts/play_wav.gd")
@@ -26,8 +27,10 @@ func _process(delta: float) -> void:
 	label_hp.text = "HP: " + str(int(player.hp))
 	label_score.text = "Score: " + str(int(score))
 	label_move_mode.text = "Move Mode: " + str(Global.MOVE_MODE.find_key(Global.move_mode)).to_lower()
-	if Input.is_action_just_pressed("pause"):
-		_on_button_pause_pressed()
+	if Global.is_easy:
+		label_difficult.text = "Difficult: easy"
+	else:
+		label_difficult.text = "Difficult: hard"
 	if player.hp <= 0:
 		is_lose = true
 		is_pause = true

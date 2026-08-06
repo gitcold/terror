@@ -17,18 +17,26 @@ var bullet_size : float = 1
 @export var timer : Timer
 @export var light : PointLight2D
 var hp : float = 0
-const HP : float = 5
-const HP_MAX : float = 5
+var HP : float = 5
+var HP_MAX : float = 5
 var invincible_second : float = 0
 const INVINCIBLE_SECOND : float = 4
 @export var item_count : Dictionary
 var item_effect = preload("res://Scripts/player/item_effect.gd")
 var light_x : float = 0
 var setting = preload("res://Scripts/Setting.gd")
+var light_min : float = 8
+var light_max : float = 24
 
 func _ready() -> void:
 	timer.wait_time = 0.4
+	if Global.is_easy:
+		HP = 10
+		HP_MAX = 15
+		light_min = 12
+		light_max = 48
 	hp = HP
+	light.scale = Vector2(light_min, light_min)
 	bullet_type = bullet_scene
 	if Global.is_fog:
 		light.visible = true

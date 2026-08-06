@@ -30,58 +30,77 @@ text = "Back"
 [node name="Button_change" type="Button" parent="." unique_id=1948460492]
 layout_mode = 0
 offset_left = 532.0
-offset_top = 164.0
+offset_top = 75.0
 offset_right = 598.0
-offset_bottom = 195.0
+offset_bottom = 106.0
 scale = Vector2(2.8094625, 2.8094625)
 text = "Change"
 
 [node name="MoveMode" type="Label" parent="." unique_id=852395455]
 layout_mode = 0
 offset_left = 27.0
-offset_top = 182.00002
+offset_top = 93.00002
 offset_right = 134.0
-offset_bottom = 205.00002
+offset_bottom = 116.00003
 scale = Vector2(1.9414736, 1.9414736)
 text = "Move Mode："
 
 [node name="Button_fog" type="Button" parent="." unique_id=463113681]
 layout_mode = 0
 offset_left = 536.0
-offset_top = 259.00003
+offset_top = 170.00003
 offset_right = 572.0
-offset_bottom = 290.00003
+offset_bottom = 201.00003
 scale = Vector2(2.8094625, 2.8094625)
 text = "Fog"
 
 [node name="Fog" type="Label" parent="." unique_id=192540923]
 layout_mode = 0
 offset_left = 28.00003
-offset_top = 273.0
+offset_top = 184.0
 offset_right = 72.00003
-offset_bottom = 296.0
+offset_bottom = 207.0
 scale = Vector2(2.8094625, 2.8094625)
 text = "Fog："
 
 [node name="Button_lightning" type="Button" parent="." unique_id=1917925276]
 layout_mode = 0
 offset_left = 536.0
-offset_top = 370.0
+offset_top = 281.0
 offset_right = 617.0
-offset_bottom = 401.0
+offset_bottom = 312.0
 scale = Vector2(2.8094625, 2.8094625)
 text = "Lightning"
 
 [node name="Lightning" type="Label" parent="." unique_id=484821153]
 layout_mode = 0
 offset_left = 28.00003
-offset_top = 383.99997
+offset_top = 294.99997
 offset_right = 109.00003
-offset_bottom = 406.99997
+offset_bottom = 317.99997
 scale = Vector2(2.8094625, 2.8094625)
 text = "Lightning: "
+
+[node name="Button_difficult" type="Button" parent="." unique_id=55974971]
+layout_mode = 0
+offset_left = 536.0
+offset_top = 376.0
+offset_right = 617.0
+offset_bottom = 407.0
+scale = Vector2(2.8094625, 2.8094625)
+text = "Difficult"
+
+[node name="Difficult" type="Label" parent="." unique_id=1343794931]
+layout_mode = 0
+offset_left = 28.00003
+offset_top = 389.99997
+offset_right = 109.00003
+offset_bottom = 412.99997
+scale = Vector2(2.8094625, 2.8094625)
+text = "Difficult: "
 
 [connection signal="pressed" from="Button_back" to="." method="_on_button_back_pressed"]
 [connection signal="pressed" from="Button_change" to="." method="_on_button_change_pressed"]
 [connection signal="pressed" from="Button_fog" to="." method="_on_button_fog_pressed"]
 [connection signal="pressed" from="Button_lightning" to="." method="_on_button_lightning_pressed"]
+[connection signal="pressed" from="Button_difficult" to="." method="_on_button_difficult_pressed"]

@@ -1,27 +1,29 @@
 [gd_scene format=3 uid="uid://voc5gk35wwbn"]
 
 [ext_resource type="PackedScene" uid="uid://hl0aym5br8po" path="res://Scenes/player/Player.tscn" id="1_iukft"]
-[ext_resource type="Script" uid="uid://d65bt4uee8y1" path="res://Scripts/GameManager.gd" id="1_j5yw3"]
-[ext_resource type="Script" uid="uid://dipkdh56gvywk" path="res://Scripts/EnemySpawner.gd" id="3_kldst"]
-[ext_resource type="Script" uid="uid://brhlhy2oadlsm" path="res://Scripts/ItemSpawner.gd" id="4_kldst"]
+[ext_resource type="Script" uid="uid://d65bt4uee8y1" path="res://Scripts/ingame/GameManager.gd" id="1_j5yw3"]
+[ext_resource type="Script" uid="uid://dipkdh56gvywk" path="res://Scripts/ingame/EnemySpawner.gd" id="3_kldst"]
+[ext_resource type="Script" uid="uid://brhlhy2oadlsm" path="res://Scripts/ingame/ItemSpawner.gd" id="4_kldst"]
 [ext_resource type="AudioStream" uid="uid://bgtjfg0gxnfjs" path="res://assets/music/哈德曼的妖怪少女.mp3" id="5_b2bpf"]
-[ext_resource type="Script" uid="uid://yi1x2llp7pip" path="res://Scripts/bgm.gd" id="6_7lihs"]
+[ext_resource type="Script" uid="uid://5662lbuf0wu" path="res://Scripts/ingame/Pause.gd" id="6_3cx6b"]
+[ext_resource type="Script" uid="uid://yi1x2llp7pip" path="res://Scripts/ingame/bgm.gd" id="6_7lihs"]
 [ext_resource type="AudioStream" uid="uid://1tna7ndkq1qw" path="res://assets/music/圣德传说　～ True Administrator.mp3" id="7_dahhg"]
 [ext_resource type="AudioStream" uid="uid://b6vdj4sxxfie8" path="res://assets/music/夜空中的UFO恋曲.mp3" id="8_3so38"]
 [ext_resource type="AudioStream" uid="uid://cis1dhirdmrf6" path="res://assets/music/少女觉　～ 3rd eye.mp3" id="9_3cx6b"]
 [ext_resource type="AudioStream" uid="uid://dnekn0p3bg0rx" path="res://assets/music/欲望加速.mp3" id="10_wxwew"]
 [ext_resource type="AudioStream" uid="uid://c5odx3vdu52j6" path="res://assets/music/沉向空中的辉针城.mp3" id="11_acvyw"]
-[ext_resource type="Script" uid="uid://c64qsef8vtc47" path="res://Scripts/LightningSpawner.gd" id="12_3so38"]
+[ext_resource type="Script" uid="uid://c64qsef8vtc47" path="res://Scripts/ingame/LightningSpawner.gd" id="12_3so38"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g7b7a"]
 distance = -2.0
 
-[node name="Game" type="Node2D" unique_id=1265386921 node_paths=PackedStringArray("player", "label_hp", "label_score", "label_move_mode")]
+[node name="Game" type="Node2D" unique_id=1265386921 node_paths=PackedStringArray("player", "label_hp", "label_score", "label_move_mode", "label_difficult")]
 script = ExtResource("1_j5yw3")
 player = NodePath("Player")
 label_hp = NodePath("UI/HP")
 label_score = NodePath("UI/Score")
 label_move_mode = NodePath("UI/MoveMode")
+label_difficult = NodePath("UI/Difficult")
 
 [node name="Background" type="ColorRect" parent="." unique_id=1366355263]
 offset_right = 800.0
@@ -70,6 +72,10 @@ script = ExtResource("4_kldst")
 
 [node name="LightningSpawner" type="Node2D" parent="." unique_id=595374302]
 script = ExtResource("12_3so38")
+
+[node name="Pause" type="Node2D" parent="." unique_id=2036767876]
+process_mode = 3
+script = ExtResource("6_3cx6b")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1816105921]
 volume_db = -20.0
@@ -221,7 +227,14 @@ offset_left = 5.0
 offset_top = 71.0
 offset_right = 45.0
 offset_bottom = 94.0
-text = "KEYBOARD"
+text = "Move Mode: "
+
+[node name="Difficult" type="Label" parent="UI" unique_id=817884026]
+offset_left = 5.0
+offset_top = 97.0
+offset_right = 75.0
+offset_bottom = 120.0
+text = "Difficult: "
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1559446116]
 color = Color(0, 0, 0, 1)

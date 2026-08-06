@@ -12,6 +12,10 @@ func _process(delta: float) -> void:
 	$MoveMode.text = "Move Mode: " + str(Global.MOVE_MODE.find_key(Global.move_mode)).to_lower()
 	$Fog.text = "Fog: " + str(Global.is_fog).to_lower()
 	$Lightning.text = "Lightning: " + str(Global.is_lightning).to_lower()
+	if Global.is_easy:
+		$Difficult.text = "Difficult: easy"
+	else:
+		$Difficult.text = "Difficult: hard"
 
 
 func _on_button_back_pressed() -> void:
@@ -43,3 +47,8 @@ func _on_button_fog_pressed() -> void:
 func _on_button_lightning_pressed() -> void:
 	wav_player.play_wav("res://assets/wav/click.wav", current)
 	Global.is_lightning = not Global.is_lightning
+
+
+func _on_button_difficult_pressed() -> void:
+	wav_player.play_wav("res://assets/wav/click.wav", current)
+	Global.is_easy = not Global.is_easy

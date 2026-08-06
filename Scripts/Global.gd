@@ -12,3 +12,4 @@ enum MOVE_MODE {
 var move_mode : MOVE_MODE = MOVE_MODE.KEYBOARD_MOUSE
 var is_fog : bool = true
 var is_lightning : bool = true
+var is_easy : bool = false

@@ -1,6 +1,6 @@
 [gd_scene format=3 uid="uid://ys3b0kdmg4ms"]
 
-[ext_resource type="Script" uid="uid://nnlia57r6e3x" path="res://Scripts/Lightning.gd" id="1_2jimd"]
+[ext_resource type="Script" uid="uid://nnlia57r6e3x" path="res://Scripts/ingame/Lightning.gd" id="1_2jimd"]
 
 [sub_resource type="Gradient" id="Gradient_xrv66"]
 offsets = PackedFloat32Array(0.2, 0.9)
