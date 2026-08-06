@@ -45,6 +45,7 @@ func _ready() -> void:
 func _physics_process(delta: float) -> void:
 	velocity = Vector2.ZERO
 	var mouse_pos = get_global_mouse_position()
+	var aim = Input.get_vector("aim_left", "aim_right", "aim_up", "aim_down") * move_speed
 	match Global.move_mode:
 		Global.MOVE_MODE.TOUCH:
 			#朝向鼠标
@@ -59,13 +60,18 @@ func _physics_process(delta: float) -> void:
 						velocity = Vector2(cos(theta), sin(theta)) * distance * move_speed_far
 					else:
 						velocity = Vector2(cos(theta), sin(theta)) * move_speed_near
-					
-		Global.MOVE_MODE.JOYSTICK:
+		Global.MOVE_MODE.VIRTUAL_JOYSTICK:
 			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
 			look_at(position + velocity)
 		Global.MOVE_MODE.KEYBOARD:
 			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
+			look_at(position + aim)
+		Global.MOVE_MODE.KEYBOARD_MOUSE:
+			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
 			look_at(mouse_pos)
+		Global.MOVE_MODE.JOYSTICK:
+			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
+			look_at(position + aim)
 	move_and_slide()
 	#无敌帧
 	if invincible_second > 0:
@@ -76,6 +82,7 @@ func _physics_process(delta: float) -> void:
 	#item倒计时
 	item_effect.item_effecting(self, delta)
 	item_effect.item_counting(self, delta)
+	#$Label.text = str(item_count["Sunshine"]) + "\n and \n" + str(light.scale.x)
 	if Global.move_mode == Global.MOVE_MODE.VIRTUAL_JOYSTICK:
 		joystick.visible = true
 	else:

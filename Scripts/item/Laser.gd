@@ -10,7 +10,7 @@ func _ready() -> void:
 
 func _physics_process(delta: float) -> void:
 	counter -= delta
-	rotation += randf_range(5,5) * delta
+	rotation += randf_range(1,1) * delta
 	if counter < 0:
 		is_dead = true
 	if is_dead:

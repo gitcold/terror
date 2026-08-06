@@ -44,17 +44,36 @@ static func item_effecting(player : CharacterBody2D, delta : float) -> void:
 					player.bullet_type = player.laser_scene
 					player.bullet_offset = 19
 				"Sunshine":
-					if player.light.scale.x == 8:
-						player.light_x = 12
-					if player.light_x <= 0:
+					var count = player.item_count[i]
+					if count > 3 and player.light.scale.x < 32:
+						if player.light_x <= 0:
+							player.light_x = (32 - player.light.scale.x) * 0.4
+							if (32 - player.light.scale.x) < 2:
+								player.light_x = (32 - 2) * 0.8
+					if player.light.scale.x > 32:
 						player.light_x = 0
-					else:
-						player.light_x -= 3 * delta
-					if player.item_count[i] < 3:
-						player.light_x = -8.6 * player.item_count[i] / 1.5
-						if player.light.scale.x <= 8:
-							player.light_x = 0
-							player.light.scale = Vector2(8, 8)
+						player.light.scale = Vector2(32, 32)
+					if count <= 3 and player.light.scale.x > 8:
+						player.light_x = -(player.light.scale.x - 8) * 1.3
+						if (player.light.scale.x - 8) < 3:
+							player.light_x = -3 * 1.3
+					if player.light.scale.x < 8:
+						player.light_x = 0
+						player.light.scale = Vector2(8, 8)
+					if count <= 0.2:
+						player.light.scale = Vector2(8, 8)
+					
+					#if player.light.scale.x == 8:
+					#	player.light_x = 12
+					#if player.light_x <= 0:
+					#	player.light_x = 0
+					#else:
+					#	player.light_x -= 3 * delta
+					#if player.item_count[i] < 3:
+					#	player.light_x = -8.6 * player.item_count[i] / 1.5
+					#	if player.light.scale.x <= 8:
+					#		player.light_x = 0
+					#		player.light.scale = Vector2(8, 8)
 				"ElectricBead":
 					player.bullet_type = player.electric_bead_scene
 					player.bullet_offset = 19
