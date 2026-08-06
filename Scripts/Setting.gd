@@ -11,6 +11,7 @@ func _ready() -> void:
 func _process(delta: float) -> void:
 	$MoveMode.text = "Move Mode: " + str(Global.MOVE_MODE.find_key(Global.move_mode)).to_lower()
 	$Fog.text = "Fog: " + str(Global.is_fog).to_lower()
+	$Lightning.text = "Lightning: " + str(Global.is_lightning).to_lower()
 
 
 func _on_button_back_pressed() -> void:
@@ -37,3 +38,8 @@ static func _on_button_change_pressed() -> void:
 func _on_button_fog_pressed() -> void:
 	wav_player.play_wav("res://assets/wav/click.wav", current)
 	Global.is_fog = not Global.is_fog
+
+
+func _on_button_lightning_pressed() -> void:
+	wav_player.play_wav("res://assets/wav/click.wav", current)
+	Global.is_lightning = not Global.is_lightning

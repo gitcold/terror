@@ -26,7 +26,7 @@ var spawn_data : Array[Dictionary] = [
 		"first_count"=Vector2(20, 25),
 	},
 	{
-		"count"=Vector2(12, 45),
+		"count"=Vector2(12, 60),
 		"distance"=50,
 		"name"="Sunshine",
 		"first_count"=Vector2(0, 1),

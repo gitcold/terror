@@ -11,6 +11,7 @@
 [ext_resource type="AudioStream" uid="uid://cis1dhirdmrf6" path="res://assets/music/少女觉　～ 3rd eye.mp3" id="9_3cx6b"]
 [ext_resource type="AudioStream" uid="uid://dnekn0p3bg0rx" path="res://assets/music/欲望加速.mp3" id="10_wxwew"]
 [ext_resource type="AudioStream" uid="uid://c5odx3vdu52j6" path="res://assets/music/沉向空中的辉针城.mp3" id="11_acvyw"]
+[ext_resource type="Script" uid="uid://c64qsef8vtc47" path="res://Scripts/LightningSpawner.gd" id="12_3so38"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g7b7a"]
 distance = -2.0
@@ -66,6 +67,9 @@ script = ExtResource("3_kldst")
 
 [node name="ItemSpawner" type="Node2D" parent="." unique_id=1132203874]
 script = ExtResource("4_kldst")
+
+[node name="LightningSpawner" type="Node2D" parent="." unique_id=595374302]
+script = ExtResource("12_3so38")
 
 [node name="AudioStreamPlayer" type="AudioStreamPlayer" parent="." unique_id=1816105921]
 volume_db = -20.0
