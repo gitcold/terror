@@ -31,6 +31,12 @@ var spawn_data : Array[Dictionary] = [
 		"name"="GreenStar",
 		"first_count"=50,
 	},
+	{
+		"count"=Vector2(12, 25),
+		"distance"=0,
+		"name"="Sprite",
+		"first_count"=20,
+	},
 ]
 
 var spawn_count : Array
@@ -40,6 +46,8 @@ func _ready() -> void:
 	randomize()
 	for i in range(enemy_num):
 		spawn_count.append(spawn_data[i]["first_count"]) 
+	if not Global.is_fog:
+		spawn_count[5] = INF
 	
 func _process(delta: float) -> void:
 	for i in range(enemy_num):

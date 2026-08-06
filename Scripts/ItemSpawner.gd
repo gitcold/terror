@@ -26,13 +26,13 @@ var spawn_data : Array[Dictionary] = [
 		"first_count"=Vector2(20, 25),
 	},
 	{
-		"count"=Vector2(12, 20),
+		"count"=Vector2(12, 45),
 		"distance"=50,
 		"name"="Sunshine",
-		"first_count"=Vector2(12, 15),
+		"first_count"=Vector2(0, 1),
 	},
 	{
-		"count"=Vector2(25, 45),
+		"count"=Vector2(35, 55),
 		"distance"=50,
 		"name"="ElectricBead",
 		"first_count"=Vector2(30, 45),
@@ -48,7 +48,8 @@ func _ready() -> void:
 		var count_min = spawn_data[i]["first_count"].x
 		var count_max = spawn_data[i]["first_count"].y
 		spawn_count.append(randf_range(count_min,count_max))
-	
+	if not Global.is_fog:
+		spawn_count[4] = INF
 	
 func _process(delta: float) -> void:
 	for i in range(enemy_num):

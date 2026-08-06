@@ -6,8 +6,8 @@
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_nd28d"]
 
 [node name="CyanSquare" type="CharacterBody2D" unique_id=1185939940]
-collision_layer = 2
-collision_mask = 2
+collision_layer = 0
+collision_mask = 0
 script = ExtResource("1_rgftn")
 
 [node name="Sprite2D" type="Sprite2D" parent="." unique_id=1370188911]

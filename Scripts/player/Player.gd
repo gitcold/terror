@@ -11,6 +11,8 @@ var bullet_size : float = 1
 @export var electric_bead_scene : PackedScene
 @export var bullet_type : PackedScene
 @export var joystick : VirtualJoystick
+@export var joystick_left : VirtualJoystick
+@export var joystick_right : VirtualJoystick
 @export var polygon : Polygon2D
 @export var timer : Timer
 @export var light : PointLight2D
@@ -72,6 +74,9 @@ func _physics_process(delta: float) -> void:
 		Global.MOVE_MODE.JOYSTICK:
 			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
 			look_at(position + aim)
+		Global.MOVE_MODE.DOUBLE_VIRTUAL_JOYSTICK:
+			velocity = Input.get_vector("left", "right", "up", "down") * move_speed
+			look_at(position + aim)
 	move_and_slide()
 	#无敌帧
 	if invincible_second > 0:
@@ -87,6 +92,12 @@ func _physics_process(delta: float) -> void:
 		joystick.visible = true
 	else:
 		joystick.visible = false
+	if Global.move_mode == Global.MOVE_MODE.DOUBLE_VIRTUAL_JOYSTICK:
+		joystick_left.visible = true
+		joystick_right.visible = true
+	else:
+		joystick_left.visible = false
+		joystick_right.visible = false
 
 	
 func _on_fire() -> void:

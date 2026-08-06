@@ -3,8 +3,8 @@
 [ext_resource type="Script" uid="uid://ck0kfl36m2x28" path="res://Scripts/item/Sunshine.gd" id="1_g04hh"]
 [ext_resource type="Texture2D" uid="uid://dec3nudh3thh0" path="res://assets/item/Sunshine.png" id="2_g04hh"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
-size = Vector2(24, 16)
+[sub_resource type="CircleShape2D" id="CircleShape2D_n6hwn"]
+radius = 15.033297
 
 [node name="Sunshine" type="Area2D" unique_id=651272272]
 script = ExtResource("1_g04hh")
@@ -13,6 +13,6 @@ script = ExtResource("1_g04hh")
 texture = ExtResource("2_g04hh")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=57353655]
-shape = SubResource("RectangleShape2D_g7b7a")
+shape = SubResource("CircleShape2D_n6hwn")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]

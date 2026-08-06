@@ -1,0 +1,47 @@
+[gd_scene format=3 uid="uid://7qpi3l16xqdb"]
+
+[ext_resource type="Script" uid="uid://bdl0hdoll2gdt" path="res://Scripts/enemy/Sprite.gd" id="1_wgyqi"]
+[ext_resource type="Texture2D" uid="uid://cqj0cwhv5argh" path="res://assets/enemy/Sprite.png" id="2_mho6t"]
+
+[sub_resource type="CircleShape2D" id="CircleShape2D_g7b7a"]
+radius = 10.446257
+
+[sub_resource type="Gradient" id="Gradient_xrv66"]
+offsets = PackedFloat32Array(0.2, 0.9)
+colors = PackedColorArray(1, 1, 1, 1, 0, 0, 0, 1)
+metadata/_snap_enabled = true
+
+[sub_resource type="GradientTexture2D" id="GradientTexture2D_wgyqi"]
+gradient = SubResource("Gradient_xrv66")
+fill = 1
+fill_from = Vector2(0.5, 0.5)
+fill_to = Vector2(0.5, 0)
+
+[node name="Sprite" type="CharacterBody2D" unique_id=1185939940]
+collision_layer = 0
+collision_mask = 0
+script = ExtResource("1_wgyqi")
+
+[node name="Sprite2D" type="Sprite2D" parent="." unique_id=1370188911]
+scale = Vector2(0.68006206, 0.68006206)
+texture = ExtResource("2_mho6t")
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=734780923]
+position = Vector2(0.9999999, 2.9999995)
+scale = Vector2(0.67009646, 0.67009646)
+shape = SubResource("CircleShape2D_g7b7a")
+
+[node name="Area2D" type="Area2D" parent="." unique_id=864548962]
+
+[node name="CollisionShape2D" type="CollisionShape2D" parent="Area2D" unique_id=2056461302]
+position = Vector2(0.9999999, 2.9999995)
+scale = Vector2(0.67009646, 0.67009646)
+shape = SubResource("CircleShape2D_g7b7a")
+
+[node name="PointLight2D" type="PointLight2D" parent="." unique_id=1239521249]
+scale = Vector2(3.359375, 3.359375)
+texture = SubResource("GradientTexture2D_wgyqi")
+
+[connection signal="area_entered" from="Area2D" to="." method="_on_area_2d_area_entered"]
+[connection signal="body_entered" from="Area2D" to="." method="_on_area_2d_body_entered"]
+[connection signal="body_exited" from="Area2D" to="." method="_on_area_2d_body_exited"]

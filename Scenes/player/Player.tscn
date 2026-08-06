@@ -54,6 +54,5 @@ texture = SubResource("GradientTexture2D_r5va5")
 [node name="Label" type="Label" parent="." unique_id=1859993805]
 offset_right = 40.0
 offset_bottom = 23.0
-text = "..."
 
 [connection signal="timeout" from="Timer" to="." method="_on_fire"]

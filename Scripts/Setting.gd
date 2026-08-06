@@ -29,6 +29,8 @@ static func _on_button_change_pressed() -> void:
 		Global.MOVE_MODE.KEYBOARD_MOUSE:
 			Global.move_mode = Global.MOVE_MODE.JOYSTICK
 		Global.MOVE_MODE.JOYSTICK:
+			Global.move_mode = Global.MOVE_MODE.DOUBLE_VIRTUAL_JOYSTICK
+		Global.MOVE_MODE.DOUBLE_VIRTUAL_JOYSTICK:
 			Global.move_mode = Global.MOVE_MODE.TOUCH
 			
 

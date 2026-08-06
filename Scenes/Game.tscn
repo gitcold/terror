@@ -11,7 +11,6 @@
 [ext_resource type="AudioStream" uid="uid://cis1dhirdmrf6" path="res://assets/music/少女觉　～ 3rd eye.mp3" id="9_3cx6b"]
 [ext_resource type="AudioStream" uid="uid://dnekn0p3bg0rx" path="res://assets/music/欲望加速.mp3" id="10_wxwew"]
 [ext_resource type="AudioStream" uid="uid://c5odx3vdu52j6" path="res://assets/music/沉向空中的辉针城.mp3" id="11_acvyw"]
-[ext_resource type="PackedScene" uid="uid://dvxgiqlmq8nl5" path="res://Scenes/item/Sunshine.tscn" id="12_3so38"]
 
 [sub_resource type="WorldBoundaryShape2D" id="WorldBoundaryShape2D_g7b7a"]
 distance = -2.0
@@ -55,9 +54,11 @@ position = Vector2(800, 240)
 rotation = -1.5707964
 shape = SubResource("WorldBoundaryShape2D_g7b7a")
 
-[node name="Player" parent="." unique_id=1493253394 node_paths=PackedStringArray("joystick") instance=ExtResource("1_iukft")]
+[node name="Player" parent="." unique_id=1493253394 node_paths=PackedStringArray("joystick", "joystick_left", "joystick_right") instance=ExtResource("1_iukft")]
 position = Vector2(378, 264)
 joystick = NodePath("../UI/VirtualJoystick")
+joystick_left = NodePath("../UI/Left")
+joystick_right = NodePath("../UI/Right")
 metadata/_edit_group_ = true
 
 [node name="EnemySpawner" type="Node2D" parent="." unique_id=945491941]
@@ -88,6 +89,35 @@ action_left = &"left"
 action_right = &"right"
 action_up = &"up"
 action_down = &"down"
+visibility_mode = 1
+
+[node name="Left" type="VirtualJoystick" parent="UI" unique_id=6631725]
+visible = false
+anchors_preset = 9
+anchor_bottom = 1.0
+offset_right = 400.0
+grow_vertical = 2
+joystick_mode = 1
+action_left = &"left"
+action_right = &"right"
+action_up = &"up"
+action_down = &"down"
+visibility_mode = 1
+
+[node name="Right" type="VirtualJoystick" parent="UI" unique_id=292852080]
+visible = false
+anchors_preset = 11
+anchor_left = 1.0
+anchor_right = 1.0
+anchor_bottom = 1.0
+offset_left = -400.0
+grow_horizontal = 0
+grow_vertical = 2
+joystick_mode = 1
+action_left = &"aim_left"
+action_right = &"aim_right"
+action_up = &"aim_up"
+action_down = &"aim_down"
 visibility_mode = 1
 
 [node name="Button_change" type="Button" parent="UI" unique_id=1764983060]
@@ -191,9 +221,6 @@ text = "KEYBOARD"
 
 [node name="CanvasModulate" type="CanvasModulate" parent="." unique_id=1559446116]
 color = Color(0, 0, 0, 1)
-
-[node name="Sunshine" parent="." unique_id=651272272 instance=ExtResource("12_3so38")]
-position = Vector2(232, 288)
 
 [connection signal="finished" from="AudioStreamPlayer" to="AudioStreamPlayer" method="_on_finished"]
 [connection signal="pressed" from="UI/Button_change" to="Player" method="_on_move_mode_change"]

@@ -25,8 +25,6 @@ static func item_counting(player : CharacterBody2D, delta : float) -> void:
 				"ElectricBead":
 					player.bullet_type = player.bullet_scene
 					player.bullet_offset = 13
-				_:
-					pass
 			player.item_count[i] = 0
 		
 static func item_effecting(player : CharacterBody2D, delta : float) -> void:
@@ -62,20 +60,7 @@ static func item_effecting(player : CharacterBody2D, delta : float) -> void:
 						player.light.scale = Vector2(8, 8)
 					if count <= 0.2:
 						player.light.scale = Vector2(8, 8)
-					
-					#if player.light.scale.x == 8:
-					#	player.light_x = 12
-					#if player.light_x <= 0:
-					#	player.light_x = 0
-					#else:
-					#	player.light_x -= 3 * delta
-					#if player.item_count[i] < 3:
-					#	player.light_x = -8.6 * player.item_count[i] / 1.5
-					#	if player.light.scale.x <= 8:
-					#		player.light_x = 0
-					#		player.light.scale = Vector2(8, 8)
 				"ElectricBead":
 					player.bullet_type = player.electric_bead_scene
 					player.bullet_offset = 19
-				_:
-					pass
+				

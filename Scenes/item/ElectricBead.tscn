@@ -4,7 +4,7 @@
 [ext_resource type="Texture2D" uid="uid://c4pvla7jcoxw" path="res://assets/item/ElectricBead.png" id="2_n6hwn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g7b7a"]
-size = Vector2(24, 16)
+size = Vector2(23, 17)
 
 [node name="ElectricBead" type="Area2D" unique_id=651272272]
 script = ExtResource("1_n6hwn")
@@ -13,6 +13,7 @@ script = ExtResource("1_n6hwn")
 texture = ExtResource("2_n6hwn")
 
 [node name="CollisionShape2D" type="CollisionShape2D" parent="." unique_id=57353655]
+position = Vector2(-0.5, 2.5)
 shape = SubResource("RectangleShape2D_g7b7a")
 
 [connection signal="body_entered" from="." to="." method="_on_body_entered"]
