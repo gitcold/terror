@@ -20,6 +20,7 @@ var bullet_size : float = 1
 @export var joystick : VirtualJoystick
 @export var polygon : Polygon2D
 @export var timer : Timer
+@export var light : PointLight2D
 var hp : float = 0
 const HP : float = 5
 const HP_MAX : float = 5
@@ -27,7 +28,7 @@ var invincible_second : float = 0
 const INVINCIBLE_SECOND : float = 4
 @export var item_count : Dictionary
 var item_effect = preload("res://Scripts/player/item_effect.gd")
-
+var light_x : float = 0
 
 func _ready() -> void:
 	timer.wait_time = 0.4
@@ -78,8 +79,10 @@ func _physics_process(delta: float) -> void:
 	if invincible_second > 0:
 		invincible_second -= delta
 	polygon.modulate.a = cos(invincible_second * 12)
+	light.rotation = -rotation
+	light.scale += Vector2(light_x, light_x) * delta
 	#item倒计时
-	item_effect.item_effecting(self)
+	item_effect.item_effecting(self, delta)
 	item_effect.item_counting(self, delta)
 	
 	
