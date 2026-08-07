@@ -42,7 +42,7 @@ func _process(delta: float) -> void:
 	
 func attack_player() -> void:
 	if player.invincible_second <= 0:
-		wav_player.play_wav("res://assets/wav/powerUp.wav", current)
+		wav_player.play_wav("res://assets/wav/hurt.wav", current)
 		player.hp -= 1
 		player.invincible_second = player.INVINCIBLE_SECOND
 
@@ -71,5 +71,5 @@ func _on_button_pause_pressed() -> void:
 		$UI/Menu.visible = true
 
 func give_player_item(item_name : String, item_count : float) -> void:
-	wav_player.play_wav("res://assets/wav/pickupCoin.wav", current)
+	wav_player.play_wav("res://assets/wav/pickupItem.wav", current)
 	player.item_count[item_name] += item_count

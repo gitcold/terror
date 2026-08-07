@@ -18,6 +18,6 @@ polygon = PackedVector2Array(-6.275716, -3.1378572, 6.275715, -3.1378572, 6.2757
 uv = PackedVector2Array(-24, -8, 0, -8, 0, 0, -24, 0)
 
 [node name="Timer" type="Timer" parent="." unique_id=1735650069]
-wait_time = 10.0
+wait_time = 5.0
 one_shot = true
 autostart = true

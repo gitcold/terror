@@ -35,7 +35,7 @@ func _physics_process(delta: float) -> void:
 	if hp <= 0:
 		is_dead = true
 	if is_dead:
-		wav_player.play_wav("res://assets/wav/hitHurt.wav", current)
+		wav_player.play_wav("res://assets/wav/enemyDie.wav", current)
 		queue_free()
 	
 	head_shape.rotation += 3 * delta
